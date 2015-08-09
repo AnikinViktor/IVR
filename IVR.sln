@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IVR", "IVR\IVR.csproj", "{5104D588-97FA-429E-BE86-421C533DC574}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IVRClient", "IVR\IVRClient.csproj", "{5104D588-97FA-429E-BE86-421C533DC574}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A} = {F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider", "DataProvider\DataProvider.csproj", "{0744F79E-812B-4A66-89F6-1A0B3102133D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IVRService", "IVRService\IVRService.csproj", "{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,14 @@ Global
 		{5104D588-97FA-429E-BE86-421C533DC574}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5104D588-97FA-429E-BE86-421C533DC574}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5104D588-97FA-429E-BE86-421C533DC574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
