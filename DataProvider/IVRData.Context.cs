@@ -25,6 +25,7 @@ namespace DataProvider
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
         public virtual DbSet<Penalty> Penalties { get; set; }
         public virtual DbSet<PenaltyType> PenaltyTypes { get; set; }

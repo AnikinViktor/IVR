@@ -23,6 +23,8 @@ namespace IVR
         public MainWindow()
         {
             InitializeComponent();
+            IVRServiceReference.ServiceClient ctx = new IVRServiceReference.ServiceClient();
+            
         }
     }
 }

@@ -5,28 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b0f387d4ec834b7e84a947b0fb84f439" Name="Diagram1">
-        <EntityTypeShape EntityType="IVRModel.Organization" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.Penalty" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.PenaltyType" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.Person" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.Position" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.Promotion" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.PromotionType" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.Rank" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IVRModel.Work" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
-        <AssociationConnector Association="IVRModel.FK_Organization_Organization" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Penalty_Organization" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Person_Organization" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Promotion_Organization" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Penalty_Penalty" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Penalty_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Person_Position" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Person_Rank" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Promotion_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Work_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Work_PersonInitiator" ManuallyRouted="false" />
-        <AssociationConnector Association="IVRModel.FK_Promotion_PromotionType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IVRModel.Group" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IVRModel.Organization" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="IVRModel.Penalty" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="IVRModel.PenaltyType" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="IVRModel.Person" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="IVRModel.Position" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="IVRModel.Promotion" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="IVRModel.PromotionType" Width="1.5" PointX="6" PointY="1.875" />
+        <EntityTypeShape EntityType="IVRModel.Rank" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="IVRModel.sysdiagram" Width="1.5" PointX="5.75" PointY="9.75" />
+        <EntityTypeShape EntityType="IVRModel.Work" Width="1.5" PointX="5.25" PointY="13.25" />
+        <AssociationConnector Association="IVRModel.FK_Organization_Organization" />
+        <AssociationConnector Association="IVRModel.FK_Penalty_Organization" />
+        <AssociationConnector Association="IVRModel.FK_Person_Organization" />
+        <AssociationConnector Association="IVRModel.FK_Promotion_Organization" />
+        <AssociationConnector Association="IVRModel.FK_Penalty_Penalty" />
+        <AssociationConnector Association="IVRModel.FK_Penalty_Person" />
+        <AssociationConnector Association="IVRModel.FK_Person_Position" />
+        <AssociationConnector Association="IVRModel.FK_Person_Rank" />
+        <AssociationConnector Association="IVRModel.FK_Promotion_Person" />
+        <AssociationConnector Association="IVRModel.FK_Work_Person" />
+        <AssociationConnector Association="IVRModel.FK_Work_PersonInitiator" />
+        <AssociationConnector Association="IVRModel.FK_Promotion_PromotionType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
