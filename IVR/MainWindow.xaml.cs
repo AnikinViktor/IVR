@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IVR.ViewModels;
+using Microsoft.Windows.Controls.Ribbon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +20,13 @@ namespace IVR
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : RibbonWindow
     {
+        private GroupsViewModel vm
+        {
+           get { return this.Resources["viewModel"] as GroupsViewModel;  }
+        }
+
         public MainWindow()
         {
             InitializeComponent();

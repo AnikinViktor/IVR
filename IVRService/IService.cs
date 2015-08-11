@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IVRService.DataContracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,14 +13,8 @@ namespace IVRService
     [ServiceContract]
     public interface IService
     {
-
         [OperationContract]
-        string GetData(int value);
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        // TODO: Добавьте здесь операции служб
+        List<GroupContract> GetGroups();
     }
 
 

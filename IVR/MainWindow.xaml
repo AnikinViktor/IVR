@@ -1,18 +1,84 @@
-﻿<Window x:Class="IVR.MainWindow"
+﻿<r:RibbonWindow x:Class="IVR.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IVR"
+        xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+        xmlns:vm="clr-namespace:IVR.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="550">
+        Title="Тетради ИВР" Height="350" Width="550" WindowState="Maximized">
+    <r:RibbonWindow.Resources>
+        <vm:GroupsViewModel x:Key="viewModel"></vm:GroupsViewModel>
+
+        <Style TargetType="{x:Type r:RibbonTab}">
+            <Setter Property="IsSelected" Value="{Binding Source={StaticResource viewModel}, Path=IsSelected}" />
+        </Style>
+    </r:RibbonWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <!--<RowDefinition Height="20"></RowDefinition>-->
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <r:Ribbon Grid.Row="0">
+            <r:RibbonTab Header="Группы">
+                <r:RibbonGroup>
+                    <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить группу"></r:RibbonButton>
+                    <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать группу"></r:RibbonButton>
+                    <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить группу"></r:RibbonButton>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Сотрудники">
+                <r:RibbonGroup>
+                    <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить сотрудника"></r:RibbonButton>
+                    <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать данные сотрудника"></r:RibbonButton>
+                    <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить сотрудника"></r:RibbonButton>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+        </r:Ribbon>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Source={StaticResource viewModel}, Path=Groups}" AutoGenerateColumns="False" SelectionMode="Single" 
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock></TextBlock>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="35" Width="35" Source="/Images/buddy_group.png"></Image>
+                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Text="{Binding Path=Name}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid ItemsSource="{Binding Path=Persons}" AutoGenerateColumns="False" SelectionMode="Single" 
+                        CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="Ф.И.О."></TextBlock>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="35" Width="35" Source="/Images/buddy_group.png"></Image>
+                                        <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Text="{Binding Path=FIO}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+
+        <!--<Grid Grid.Row="2" Background="Gray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -21,11 +87,6 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-
-        </Grid>
-        
-        <DataGrid Grid.Row="1">
-            
-        </DataGrid>
+        </Grid>-->
     </Grid>
-</Window>
+</r:RibbonWindow>

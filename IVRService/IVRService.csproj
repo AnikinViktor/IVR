@@ -65,6 +65,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\GroupContract.cs" />
+    <Compile Include="DataContracts\PersonContract.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
     </Compile>
@@ -81,12 +83,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataProvider\DataProvider.csproj">
-      <Project>{0744f79e-812b-4a66-89f6-1a0b3102133d}</Project>
-      <Name>DataProvider</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

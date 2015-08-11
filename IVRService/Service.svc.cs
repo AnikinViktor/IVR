@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IVRService.DataContracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,22 +13,24 @@ namespace IVRService
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Service.svc или Service.svc.cs в обозревателе решений и начните отладку.
     public class Service : IService
     {
-        public string GetData(int value)
+        public List<GroupContract> GetGroups()
         {
-            return string.Format("You entered: {0}", value);
-        }
+            List<GroupContract> result = new List<GroupContract>();
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
+            PersonContract person = new PersonContract
             {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
+                FIO = "Аникин Виктор Геннадьевич"
+            };
+
+            GroupContract group = new GroupContract
             {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+                Name = "Группа ИТО, С и В",
+                Persons = new List<PersonContract> { person }
+            };
+
+            result.Add(group);
+
+            return result;
         }
     }
 }

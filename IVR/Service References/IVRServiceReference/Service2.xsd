@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/IVRService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/IVRService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CompositeType">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfGroupContract">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GroupContract" nillable="true" type="tns:GroupContract" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:element name="ArrayOfGroupContract" nillable="true" type="tns:ArrayOfGroupContract" />
+  <xs:complexType name="GroupContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Persons" nillable="true" type="tns:ArrayOfPersonContract" />
+      <xs:element minOccurs="0" name="StartYear" type="xs:int" />
+      <xs:element minOccurs="0" name="StopYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GroupContract" nillable="true" type="tns:GroupContract" />
+  <xs:complexType name="ArrayOfPersonContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonContract" nillable="true" type="tns:PersonContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonContract" nillable="true" type="tns:ArrayOfPersonContract" />
+  <xs:complexType name="PersonContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonContract" nillable="true" type="tns:PersonContract" />
 </xs:schema>

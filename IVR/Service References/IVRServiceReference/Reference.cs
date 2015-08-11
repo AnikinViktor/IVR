@@ -15,18 +15,27 @@ namespace IVR.IVRServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/IVRService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GroupContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GroupContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private IVR.IVRServiceReference.PersonContract[] PersonsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartYearField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StopYearField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +48,127 @@ namespace IVR.IVRServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public int ID {
             get {
-                return this.BoolValueField;
+                return this.IDField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public string Name {
             get {
-                return this.StringValueField;
+                return this.NameField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public IVR.IVRServiceReference.PersonContract[] Persons {
+            get {
+                return this.PersonsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PersonsField, value) != true)) {
+                    this.PersonsField = value;
+                    this.RaisePropertyChanged("Persons");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartYear {
+            get {
+                return this.StartYearField;
+            }
+            set {
+                if ((this.StartYearField.Equals(value) != true)) {
+                    this.StartYearField = value;
+                    this.RaisePropertyChanged("StartYear");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StopYear {
+            get {
+                return this.StopYearField;
+            }
+            set {
+                if ((this.StopYearField.Equals(value) != true)) {
+                    this.StopYearField = value;
+                    this.RaisePropertyChanged("StopYear");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PersonContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class PersonContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FIOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FIO {
+            get {
+                return this.FIOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FIOField, value) != true)) {
+                    this.FIOField = value;
+                    this.RaisePropertyChanged("FIO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
                 }
             }
         }
@@ -78,17 +187,11 @@ namespace IVR.IVRServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IVRServiceReference.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        string GetData(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroups", ReplyAction="http://tempuri.org/IService/GetGroupsResponse")]
+        IVR.IVRServiceReference.GroupContract[] GetGroups();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        IVR.IVRServiceReference.CompositeType GetDataUsingDataContract(IVR.IVRServiceReference.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<IVR.IVRServiceReference.CompositeType> GetDataUsingDataContractAsync(IVR.IVRServiceReference.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroups", ReplyAction="http://tempuri.org/IService/GetGroupsResponse")]
+        System.Threading.Tasks.Task<IVR.IVRServiceReference.GroupContract[]> GetGroupsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,20 +221,12 @@ namespace IVR.IVRServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public IVR.IVRServiceReference.GroupContract[] GetGroups() {
+            return base.Channel.GetGroups();
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
-        }
-        
-        public IVR.IVRServiceReference.CompositeType GetDataUsingDataContract(IVR.IVRServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<IVR.IVRServiceReference.CompositeType> GetDataUsingDataContractAsync(IVR.IVRServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<IVR.IVRServiceReference.GroupContract[]> GetGroupsAsync() {
+            return base.Channel.GetGroupsAsync();
         }
     }
 }
