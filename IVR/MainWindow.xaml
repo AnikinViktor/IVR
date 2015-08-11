@@ -23,6 +23,7 @@
             </Grid.RowDefinitions>
 
         </Grid>
+        
         <DataGrid Grid.Row="1">
             
         </DataGrid>

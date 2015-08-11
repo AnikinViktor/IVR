@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataProvider
 {
-    [DataContract]
-    public partial class Group
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
+    //[DataContract]
+    //public partial class Group
+    //{
+    //    [DataMember]
+    //    public int ID { get; set; }
+    //    public string Name { get; set; }
+    //}
 }
