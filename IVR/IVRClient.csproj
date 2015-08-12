@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,10 +66,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Application.cs" />
+    <Compile Include="DataModel\BaseDataModel.cs" />
+    <Compile Include="DataModel\Group.cs" />
+    <Compile Include="DataModel\Person.cs" />
+    <Compile Include="DataModel\Rank.cs" />
+    <Compile Include="PersonInfo.xaml.cs">
+      <DependentUpon>PersonInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\IVRServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons.xaml.cs">
+      <DependentUpon>Buttons.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\GroupsViewModel.cs" />
@@ -83,6 +95,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PersonInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -146,12 +166,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\buddy_group.png" />
+    <Resource Include="Images\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\info.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\add.png" />
-    <Resource Include="Images\delete.png" />
-    <Resource Include="Images\edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

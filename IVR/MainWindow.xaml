@@ -19,7 +19,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <!--<RowDefinition Height="20"></RowDefinition>-->
         </Grid.RowDefinitions>
 
         <r:Ribbon Grid.Row="0">
@@ -30,26 +29,23 @@
                     <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить группу"></r:RibbonButton>
                 </r:RibbonGroup>
             </r:RibbonTab>
-            <r:RibbonTab Header="Сотрудники">
+            <!--<r:RibbonTab Header="Сотрудники">
                 <r:RibbonGroup>
                     <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить сотрудника"></r:RibbonButton>
                     <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать данные сотрудника"></r:RibbonButton>
                     <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить сотрудника"></r:RibbonButton>
                 </r:RibbonGroup>
-            </r:RibbonTab>
+            </r:RibbonTab>-->
         </r:Ribbon>
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Source={StaticResource viewModel}, Path=Groups}" AutoGenerateColumns="False" SelectionMode="Single" 
-                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock></TextBlock>
-                    </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Image Height="35" Width="35" Source="/Images/buddy_group.png"></Image>
+                                <Image Height="35" Width="35" Source="/Images/group.png"></Image>
                                 <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Text="{Binding Path=Name}"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
@@ -58,35 +54,28 @@
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <DataGrid ItemsSource="{Binding Path=Persons}" AutoGenerateColumns="False" SelectionMode="Single" 
-                        CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="Ф.И.О."></TextBlock>
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Height="35" Width="35" Source="/Images/buddy_group.png"></Image>
-                                        <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Text="{Binding Path=FIO}"></TextBlock>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <DataGrid ItemsSource="{Binding Persons}" AutoGenerateColumns="False" SelectionMode="Single" GridLinesVisibility="None" 
+                        CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseDoubleClick" Handler="PersonRow_DoubleClick"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                            <Image Height="35" Width="35" Source="/Images/person.png"></Image>
+                                            <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Text="{Binding Path=FIO}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-
-        <!--<Grid Grid.Row="2" Background="Gray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-        </Grid>-->
     </Grid>
 </r:RibbonWindow>

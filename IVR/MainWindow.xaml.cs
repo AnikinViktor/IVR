@@ -1,4 +1,5 @@
-﻿using IVR.ViewModels;
+﻿using IVR.DataModel;
+using IVR.ViewModels;
 using Microsoft.Windows.Controls.Ribbon;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,14 @@ namespace IVR
             InitializeComponent();
             IVRServiceReference.ServiceClient ctx = new IVRServiceReference.ServiceClient();
             
+        }
+
+        private void PersonRow_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = (DataGridRow)sender;
+
+            PersonInfo personWindow = new PersonInfo((Person)row.Item);
+            personWindow.Show();
         }
     }
 }

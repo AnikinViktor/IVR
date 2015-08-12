@@ -1,4 +1,5 @@
-﻿using IVR.IVRServiceReference;
+﻿using IVR.DataModel;
+using IVR.IVRServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,9 +11,9 @@ namespace IVR.ViewModels
 {
     class GroupsViewModel : BaseViewModel
     {
-        private ObservableCollection<GroupContract> groups = new ObservableCollection<GroupContract>();
+        private ObservableCollection<Group> groups = new ObservableCollection<Group>();
 
-        public ObservableCollection<GroupContract> Groups
+        public ObservableCollection<Group> Groups
         {
             get { return this.groups;  }
             set
@@ -29,7 +30,7 @@ namespace IVR.ViewModels
 
         public override void LoadData()
         {
-            Groups = new ObservableCollection<GroupContract>(Helper.I.Srv.GetGroups());
+            Groups = new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroups()));
         }
     }
 }
