@@ -57,7 +57,7 @@
                     <DataGrid ItemsSource="{Binding Persons}" AutoGenerateColumns="False" SelectionMode="Single" GridLinesVisibility="None" 
                         CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
                         <DataGrid.Resources>
-                            <Style TargetType="DataGridRow">
+                            <Style TargetType="{x:Type DataGridRow}">
                                 <EventSetter Event="MouseDoubleClick" Handler="PersonRow_DoubleClick"/>
                             </Style>
                         </DataGrid.Resources>

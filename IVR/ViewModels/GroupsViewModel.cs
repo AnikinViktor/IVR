@@ -11,14 +11,14 @@ namespace IVR.ViewModels
 {
     class GroupsViewModel : BaseViewModel
     {
-        private ObservableCollection<Group> groups = new ObservableCollection<Group>();
+        private ObservableCollection<Group> _Groups = new ObservableCollection<Group>();
 
         public ObservableCollection<Group> Groups
         {
-            get { return this.groups;  }
+            get { return this._Groups;  }
             set
             {
-                this.groups = value;
+                this._Groups = value;
                 RaisePropertyChanged("Groups");
             }
         }

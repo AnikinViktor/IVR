@@ -68,7 +68,7 @@
     <Compile Include="Application.cs" />
     <Compile Include="DataModel\BaseDataModel.cs" />
     <Compile Include="DataModel\Group.cs" />
-    <Compile Include="DataModel\Person.cs" />
+    <Compile Include="DataModel\Person\Person.cs" />
     <Compile Include="DataModel\Rank.cs" />
     <Compile Include="PersonInfo.xaml.cs">
       <DependentUpon>PersonInfo.xaml</DependentUpon>
@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\GroupsViewModel.cs" />
+    <Compile Include="ViewModels\PersonInfoViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

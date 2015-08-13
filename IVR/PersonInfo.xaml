@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IVR"
         xmlns:uc="clr-namespace:IVR.UserControls"
+        xmlns:vm="clr-namespace:IVR.ViewModels"
         mc:Ignorable="d"
         WindowState="Maximized"
         Icon="/Images/person.png"
         Title="PersonInfo" Height="600" Width="770">
+    <Window.Resources>
+        <vm:PersonInfoViewModel x:Key="viewModel"></vm:PersonInfoViewModel>
+    </Window.Resources>  
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
@@ -79,10 +83,11 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Text="Фамилия, имя, отчество:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0"></TextBox>
+                    <TextBox Text="{Binding Source={StaticResource viewModel}, Path=Person.FIO, Mode=TwoWay, NotifyOnValidationError=True, 
+                        ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0"></TextBox>
 
                     <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата рождения:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="2"></TextBox>
+                    <DatePicker Grid.Column="1" Grid.Row="2" Width="100" HorizontalAlignment="Left"></DatePicker>
 
                     <TextBlock Grid.Column="0" Grid.Row="4" Text="Место рождения:"></TextBlock>
                     <TextBox Grid.Column="1" Grid.Row="4"></TextBox>
@@ -91,7 +96,7 @@
                     <TextBox Grid.Column="1" Grid.Row="6"></TextBox>
 
                     <TextBlock Grid.Column="0" Grid.Row="8" Text="Год вступления на службу УИС:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="8"></TextBox>
+                    <TextBox Grid.Column="1" Grid.Row="8" Width="80" HorizontalAlignment="Left"></TextBox>
 
                     <TextBlock Grid.Column="0" Grid.Row="10" Text="Домашний адрес и телефон:"></TextBlock>
                     <TextBox Grid.Column="1" Grid.Row="10"></TextBox>
@@ -152,27 +157,47 @@
             </TabItem>
 
             <TabItem Header="Поощрения">
-                <DataGrid  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кем поощрен"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Вид поощрения"></DataGridTextColumn>
-                        <DataGridTextColumn Header="За что поощрен"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить поощрение" EditButtonTitle="Редактировать поощрение" DeleteButtonTitle="Удалить поощрение"></uc:Buttons>
+
+                    <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кем поощрен"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Вид поощрения"></DataGridTextColumn>
+                            <DataGridTextColumn Header="За что поощрен"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Взыскания">
-                <DataGrid  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кем наложено"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Вид взыскания"></DataGridTextColumn>
-                        <DataGridTextColumn Header="За какое нарушение"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить взыскание" EditButtonTitle="Редактировать взыскание" DeleteButtonTitle="Удалить взыскание"></uc:Buttons>
+
+                    <DataGrid Grid.Row="2"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кем наложено"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Вид взыскания"></DataGridTextColumn>
+                            <DataGridTextColumn Header="За какое нарушение"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Диагностика">
@@ -184,21 +209,41 @@
             </TabItem>
 
             <TabItem Header="Звания">
-                <DataGrid  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Дата присвоения"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Звание"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <uc:Buttons Grid.Row="0" AddButtonTitle="Присвоить звание" EditButtonTitle="Редактировать звание" DeleteButtonTitle="Удалить звание"></uc:Buttons>
+
+                    <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата присвоения"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Звание"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Должности">
-                <DataGrid  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Дата вступления"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Должность"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <uc:Buttons Grid.Row="0" AddButtonTitle="Внести должность" EditButtonTitle="Редактировать должность" DeleteButtonTitle="Удалить должность"></uc:Buttons>
+
+                    <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата вступления"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Должность"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem Header="Группы">
 

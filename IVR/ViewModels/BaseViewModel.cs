@@ -12,17 +12,17 @@ namespace IVR.ViewModels
     /// </summary>
     abstract class BaseViewModel : INotifyPropertyChanged
     {
-        private bool loading = false;
+        private bool _Loading = false;
 
         /// <summary>
         /// Сообщает о загрузке данных в модель представления
         /// </summary>
         public bool Loading
         {
-            get { return this.loading;  }
+            get { return this._Loading;  }
             set
             {
-                this.loading = value;
+                this._Loading = value;
                 RaisePropertyChanged("Loading");
             }
         }

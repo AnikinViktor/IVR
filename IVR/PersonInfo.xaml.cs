@@ -1,4 +1,5 @@
 ﻿using IVR.DataModel;
+using IVR.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,15 @@ namespace IVR
     /// </summary>
     public partial class PersonInfo : Window
     {
-        private Person person = null;
+        private PersonInfoViewModel vm
+        {
+            get { return this.Resources["viewModel"] as PersonInfoViewModel; }
+        }
 
         public PersonInfo(Person person)
         {
             InitializeComponent();
-
-            this.person = person;
+            this.vm.Person = person;
             this.Title = person.FIO;
         }
     }

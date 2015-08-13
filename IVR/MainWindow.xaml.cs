@@ -35,7 +35,7 @@ namespace IVR
             
         }
 
-        private void PersonRow_DoubleClick(object sender, MouseButtonEventArgs e)
+        private void PersonRow_DoubleClick(object sender, RoutedEventArgs e)
         {
             DataGridRow row = (DataGridRow)sender;
 
