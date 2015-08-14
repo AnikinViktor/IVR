@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IVR.ViewModels
+namespace IVRClient.ViewModels
 {
     /// <summary>
     /// Базовый класс модели представления

@@ -1,5 +1,5 @@
-﻿using IVR.DataModel;
-using IVR.ViewModels;
+﻿using IVRClient.DataModel;
+using IVRClient.ViewModels;
 using Microsoft.Windows.Controls.Ribbon;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IVR
+namespace IVRClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -40,7 +40,7 @@ namespace IVR
             DataGridRow row = (DataGridRow)sender;
 
             PersonInfo personWindow = new PersonInfo((Person)row.Item);
-            personWindow.Show();
+            personWindow.ShowDialog();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using IVR.IVRServiceReference;
+﻿using IVRClient.IVRServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IVR.DataModel
+namespace IVRClient.DataModel
 {
     public class Group : BaseDataModel
     {
@@ -19,8 +19,8 @@ namespace IVR.DataModel
         {
             this.ID = group.ID;
             this.Name = group.Name;
-            this.StartYear = group.StartYear;
-            this.StopYear = group.StopYear;
+            //this.StartYear = group.StartYear;
+            //this.StopYear = group.StopYear;
 
             this.Persons = new ObservableCollection<Person>();
             for (int i = 0; i < group.Persons.Length; ++i)

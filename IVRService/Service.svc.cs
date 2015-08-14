@@ -1,4 +1,5 @@
-﻿using IVRService.DataContracts;
+﻿using DataProvider;
+using IVRService.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,42 @@ namespace IVRService
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Service.svc или Service.svc.cs в обозревателе решений и начните отладку.
     public class Service : IService
     {
-        public List<GroupContract> GetGroups()
+        public List<GroupContract> GetGroupsWithPersons()
         {
             List<GroupContract> result = new List<GroupContract>();
 
-            PersonContract person = new PersonContract
+            using (IVREntities ctx = new IVREntities())
             {
-                FIO = "Аникин Виктор Геннадьевич"
-            };
+                foreach(Group gr in ctx.Groups.OrderBy(s => s.Name))
+                {
+                    GroupContract group = new GroupContract(gr);
+                    foreach (Person pr in gr.People.OrderBy(s => s.FIO))
+                    {
 
-            GroupContract group = new GroupContract
-            {
-                Name = "Группа ИТО, С и В",
-                Persons = new List<PersonContract> { person }
-            };
-
-            result.Add(group);
+                        PersonRank rank = pr.PersonRanks.OrderByDescending(s => s.Date).First();
+                        group.Persons.Add(new PersonContract(pr, rank));
+                    }
+                    result.Add(group);
+                }
+            }
 
             return result;
+            //List<GroupContract> result = new List<GroupContract>();
+
+            ////PersonContract person = new PersonContract
+            ////{
+            ////    FIO = "Аникин Виктор Геннадьевич"
+            ////};
+
+            ////GroupContract group = new GroupContract
+            ////{
+            ////    Name = "Группа ИТО, С и В",
+            ////    Persons = new List<PersonContract> { person }
+            ////};
+
+            //result.Add(group);
+
+            //return result;
         }
     }
 }

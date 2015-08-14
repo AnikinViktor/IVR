@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:50262/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" />
-  <xs:element name="GetGroups">
+  <xs:element name="GetGroupsWithPersons">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetGroupsResponse">
+  <xs:element name="GetGroupsWithPersonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetGroupsResult" nillable="true" type="q1:ArrayOfGroupContract" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetGroupsWithPersonsResult" nillable="true" type="q1:ArrayOfGroupContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

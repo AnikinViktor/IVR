@@ -14,7 +14,7 @@ namespace IVRService
     public interface IService
     {
         [OperationContract]
-        List<GroupContract> GetGroups();
+        List<GroupContract> GetGroupsWithPersons();
     }
 
 

@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Department.cs">
+      <DependentUpon>IVRData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Group.cs">
       <DependentUpon>IVRData.tt</DependentUpon>
     </Compile>
@@ -72,7 +75,6 @@
     <Compile Include="Organization.cs">
       <DependentUpon>IVRData.tt</DependentUpon>
     </Compile>
-    <Compile Include="PartialClasses\Group.cs" />
     <Compile Include="Penalty.cs">
       <DependentUpon>IVRData.tt</DependentUpon>
     </Compile>
@@ -80,6 +82,12 @@
       <DependentUpon>IVRData.tt</DependentUpon>
     </Compile>
     <Compile Include="Person.cs">
+      <DependentUpon>IVRData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonPosition.cs">
+      <DependentUpon>IVRData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonRank.cs">
       <DependentUpon>IVRData.tt</DependentUpon>
     </Compile>
     <Compile Include="Position.cs">

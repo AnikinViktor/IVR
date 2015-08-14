@@ -12,20 +12,13 @@ namespace DataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class Group
+    public partial class PersonRank
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Group()
-        {
-            this.People = new HashSet<Person>();
-        }
+        public int IDPerson { get; set; }
+        public int IDRank { get; set; }
+        public System.DateTime Date { get; set; }
     
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int IDDepartment { get; set; }
-    
-        public virtual Department Department { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person> People { get; set; }
+        public virtual Person Person { get; set; }
+        public virtual Rank Rank { get; set; }
     }
 }

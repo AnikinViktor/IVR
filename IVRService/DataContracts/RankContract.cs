@@ -8,13 +8,12 @@ using System.Web;
 namespace IVRService.DataContracts
 {
     [DataContract]
-    public class GroupContract
+    public class RankContract
     {
-        public GroupContract(Group group)
+        public RankContract(Rank rank)
         {
-            this.ID = group.ID;
-            this.Name = group.Name;
-            this.Persons = new List<PersonContract>();
+            this.ID = rank.ID;
+            this.Name = rank.Name;
         }
 
         [DataMember]
@@ -22,8 +21,5 @@ namespace IVRService.DataContracts
 
         [DataMember]
         public string Name { get; set; }
-
-        [DataMember]
-        public List<PersonContract> Persons { get; set; }
     }
 }

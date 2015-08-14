@@ -5,12 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище IVRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IDOrganization" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Group">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IDDepartment" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Organization">
           <Key>
@@ -48,14 +57,10 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FIO" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="IDOrganization" Type="int" Nullable="false" />
-          <Property Name="IDPosition" Type="int" Nullable="false" />
-          <Property Name="IDRank" Type="int" Nullable="false" />
+          <Property Name="BirthdayDate" Type="date" Nullable="false" />
           <Property Name="BirthdayInfo" Type="varchar(max)" />
           <Property Name="Education" Type="varchar(max)" />
-          <Property Name="YearStart" Type="tinyint" />
-          <Property Name="DatePosition" Type="date" />
-          <Property Name="DateRank" Type="date" />
+          <Property Name="YearStart" Type="int" />
           <Property Name="Address" Type="varchar(max)" />
           <Property Name="Family" Type="varchar(max)" />
           <Property Name="JobFamily" Type="varchar(max)" />
@@ -66,6 +71,32 @@
           <Property Name="Hobby" Type="varchar(max)" />
           <Property Name="ReflectionInJob" Type="varchar(max)" />
           <Property Name="ReflectionInFamily" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PersonGroup">
+          <Key>
+            <PropertyRef Name="IDPerson" />
+            <PropertyRef Name="IDGroup" />
+          </Key>
+          <Property Name="IDPerson" Type="int" Nullable="false" />
+          <Property Name="IDGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonPosition">
+          <Key>
+            <PropertyRef Name="IDPerson" />
+            <PropertyRef Name="IDPosition" />
+          </Key>
+          <Property Name="IDPerson" Type="int" Nullable="false" />
+          <Property Name="IDPosition" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonRank">
+          <Key>
+            <PropertyRef Name="IDPerson" />
+            <PropertyRef Name="IDRank" />
+          </Key>
+          <Property Name="IDPerson" Type="int" Nullable="false" />
+          <Property Name="IDRank" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -123,6 +154,30 @@
           <Property Name="Resolution" Type="varchar(max)" />
           <Property Name="IDPersonInitiator" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Department_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="IDOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IDDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Organization_Organization">
           <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
           <End Role="Organization1" Type="Self.Organization" Multiplicity="*" />
@@ -171,38 +226,74 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Organization">
-          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+        <Association Name="FK_PersonGroup_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="PersonGroup" Type="Self.PersonGroup" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Organization">
+            <Principal Role="Group">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="IDOrganization" />
+            <Dependent Role="PersonGroup">
+              <PropertyRef Name="IDGroup" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Position">
+        <Association Name="FK_PersonGroup_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonGroup" Type="Self.PersonGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonGroup">
+              <PropertyRef Name="IDPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonPosition_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonPosition" Type="Self.PersonPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonPosition">
+              <PropertyRef Name="IDPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonPosition_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <End Role="PersonPosition" Type="Self.PersonPosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Position">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Person">
+            <Dependent Role="PersonPosition">
               <PropertyRef Name="IDPosition" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Rank">
+        <Association Name="FK_PersonRank_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonRank" Type="Self.PersonRank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonRank">
+              <PropertyRef Name="IDPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRank_Rank">
           <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <End Role="PersonRank" Type="Self.PersonRank" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rank">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Person">
+            <Dependent Role="PersonRank">
               <PropertyRef Name="IDRank" />
             </Dependent>
           </ReferentialConstraint>
@@ -268,17 +359,29 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище IVRModelContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Penalty" EntityType="Self.Penalty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PenaltyType" EntityType="Self.PenaltyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonGroup" EntityType="Self.PersonGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonPosition" EntityType="Self.PersonPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonRank" EntityType="Self.PersonRank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromotionType" EntityType="Self.PromotionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rank" EntityType="Self.Rank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Department_Organization" Association="Self.FK_Department_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Department" Association="Self.FK_Group_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
           <AssociationSet Name="FK_Organization_Organization" Association="Self.FK_Organization_Organization">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="Organization1" EntitySet="Organization" />
@@ -295,17 +398,29 @@
             <End Role="Person" EntitySet="Person" />
             <End Role="Penalty" EntitySet="Penalty" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person_Organization" Association="Self.FK_Person_Organization">
-            <End Role="Organization" EntitySet="Organization" />
-            <End Role="Person" EntitySet="Person" />
+          <AssociationSet Name="FK_PersonGroup_Group" Association="Self.FK_PersonGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="PersonGroup" EntitySet="PersonGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person_Position" Association="Self.FK_Person_Position">
+          <AssociationSet Name="FK_PersonGroup_Person" Association="Self.FK_PersonGroup_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonGroup" EntitySet="PersonGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonPosition_Person" Association="Self.FK_PersonPosition_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonPosition" EntitySet="PersonPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonPosition_Position" Association="Self.FK_PersonPosition_Position">
             <End Role="Position" EntitySet="Position" />
-            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonPosition" EntitySet="PersonPosition" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person_Rank" Association="Self.FK_Person_Rank">
-            <End Role="Rank" EntitySet="Rank" />
+          <AssociationSet Name="FK_PersonRank_Person" Association="Self.FK_PersonRank_Person">
             <End Role="Person" EntitySet="Person" />
+            <End Role="PersonRank" EntitySet="PersonRank" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRank_Rank" Association="Self.FK_PersonRank_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="PersonRank" EntitySet="PersonRank" />
           </AssociationSet>
           <AssociationSet Name="FK_Promotion_Organization" Association="Self.FK_Promotion_Organization">
             <End Role="Organization" EntitySet="Organization" />
@@ -333,17 +448,28 @@
     <edmx:ConceptualModels>
       <Schema Namespace="IVRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="IVREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="IVRModel.Department" />
           <EntitySet Name="Groups" EntityType="IVRModel.Group" />
           <EntitySet Name="Organizations" EntityType="IVRModel.Organization" />
           <EntitySet Name="Penalties" EntityType="IVRModel.Penalty" />
           <EntitySet Name="PenaltyTypes" EntityType="IVRModel.PenaltyType" />
           <EntitySet Name="People" EntityType="IVRModel.Person" />
+          <EntitySet Name="PersonPositions" EntityType="IVRModel.PersonPosition" />
+          <EntitySet Name="PersonRanks" EntityType="IVRModel.PersonRank" />
           <EntitySet Name="Positions" EntityType="IVRModel.Position" />
           <EntitySet Name="Promotions" EntityType="IVRModel.Promotion" />
           <EntitySet Name="PromotionTypes" EntityType="IVRModel.PromotionType" />
           <EntitySet Name="Ranks" EntityType="IVRModel.Rank" />
           <EntitySet Name="sysdiagrams" EntityType="IVRModel.sysdiagram" />
           <EntitySet Name="Works" EntityType="IVRModel.Work" />
+          <AssociationSet Name="FK_Department_Organization" Association="IVRModel.FK_Department_Organization">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Department" Association="IVRModel.FK_Group_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
           <AssociationSet Name="FK_Organization_Organization" Association="IVRModel.FK_Organization_Organization">
             <End Role="Organization" EntitySet="Organizations" />
             <End Role="Organization1" EntitySet="Organizations" />
@@ -351,10 +477,6 @@
           <AssociationSet Name="FK_Penalty_Organization" Association="IVRModel.FK_Penalty_Organization">
             <End Role="Organization" EntitySet="Organizations" />
             <End Role="Penalty" EntitySet="Penalties" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Person_Organization" Association="IVRModel.FK_Person_Organization">
-            <End Role="Organization" EntitySet="Organizations" />
-            <End Role="Person" EntitySet="People" />
           </AssociationSet>
           <AssociationSet Name="FK_Promotion_Organization" Association="IVRModel.FK_Promotion_Organization">
             <End Role="Organization" EntitySet="Organizations" />
@@ -368,13 +490,13 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Penalty" EntitySet="Penalties" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person_Position" Association="IVRModel.FK_Person_Position">
-            <End Role="Position" EntitySet="Positions" />
+          <AssociationSet Name="FK_PersonPosition_Person" Association="IVRModel.FK_PersonPosition_Person">
             <End Role="Person" EntitySet="People" />
+            <End Role="PersonPosition" EntitySet="PersonPositions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person_Rank" Association="IVRModel.FK_Person_Rank">
-            <End Role="Rank" EntitySet="Ranks" />
+          <AssociationSet Name="FK_PersonRank_Person" Association="IVRModel.FK_PersonRank_Person">
             <End Role="Person" EntitySet="People" />
+            <End Role="PersonRank" EntitySet="PersonRanks" />
           </AssociationSet>
           <AssociationSet Name="FK_Promotion_Person" Association="IVRModel.FK_Promotion_Person">
             <End Role="Person" EntitySet="People" />
@@ -388,17 +510,42 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Work" EntitySet="Works" />
           </AssociationSet>
+          <AssociationSet Name="FK_PersonPosition_Position" Association="IVRModel.FK_PersonPosition_Position">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="PersonPosition" EntitySet="PersonPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRank_Rank" Association="IVRModel.FK_PersonRank_Rank">
+            <End Role="Rank" EntitySet="Ranks" />
+            <End Role="PersonRank" EntitySet="PersonRanks" />
+          </AssociationSet>
           <AssociationSet Name="FK_Promotion_PromotionType" Association="IVRModel.FK_Promotion_PromotionType">
             <End Role="PromotionType" EntitySet="PromotionTypes" />
             <End Role="Promotion" EntitySet="Promotions" />
           </AssociationSet>
+          <AssociationSet Name="PersonGroup" Association="IVRModel.PersonGroup">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IDOrganization" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Organization" Relationship="IVRModel.FK_Department_Organization" FromRole="Department" ToRole="Organization" />
+          <NavigationProperty Name="Groups" Relationship="IVRModel.FK_Group_Department" FromRole="Department" ToRole="Group" />
+        </EntityType>
         <EntityType Name="Group">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IDDepartment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="IVRModel.FK_Group_Department" FromRole="Group" ToRole="Department" />
+          <NavigationProperty Name="People" Relationship="IVRModel.PersonGroup" FromRole="Group" ToRole="Person" />
         </EntityType>
         <EntityType Name="Organization">
           <Key>
@@ -406,12 +553,12 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="IDParent" Type="Int32" Nullable="true" />
+          <Property Name="IDParent" Type="Int32" />
           <Property Name="OGRN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departments" Relationship="IVRModel.FK_Department_Organization" FromRole="Organization" ToRole="Department" />
           <NavigationProperty Name="Organization1" Relationship="IVRModel.FK_Organization_Organization" FromRole="Organization" ToRole="Organization1" />
           <NavigationProperty Name="Organization2" Relationship="IVRModel.FK_Organization_Organization" FromRole="Organization1" ToRole="Organization" />
           <NavigationProperty Name="Penalties" Relationship="IVRModel.FK_Penalty_Organization" FromRole="Organization" ToRole="Penalty" />
-          <NavigationProperty Name="People" Relationship="IVRModel.FK_Person_Organization" FromRole="Organization" ToRole="Person" />
           <NavigationProperty Name="Promotions" Relationship="IVRModel.FK_Promotion_Organization" FromRole="Organization" ToRole="Promotion" />
         </EntityType>
         <EntityType Name="Penalty">
@@ -445,14 +592,10 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="IDOrganization" Type="Int32" Nullable="false" />
-          <Property Name="IDPosition" Type="Int32" Nullable="false" />
-          <Property Name="IDRank" Type="Int32" Nullable="false" />
+          <Property Name="BirthdayDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="BirthdayInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="YearStart" Type="Byte" />
-          <Property Name="DatePosition" Type="DateTime" Precision="0" />
-          <Property Name="DateRank" Type="DateTime" Precision="0" />
+          <Property Name="YearStart" Type="Int32" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Family" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="JobFamily" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -463,13 +606,35 @@
           <Property Name="Hobby" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ReflectionInJob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ReflectionInFamily" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Organization" Relationship="IVRModel.FK_Person_Organization" FromRole="Person" ToRole="Organization" />
           <NavigationProperty Name="Penalties" Relationship="IVRModel.FK_Penalty_Person" FromRole="Person" ToRole="Penalty" />
-          <NavigationProperty Name="Position" Relationship="IVRModel.FK_Person_Position" FromRole="Person" ToRole="Position" />
-          <NavigationProperty Name="Rank" Relationship="IVRModel.FK_Person_Rank" FromRole="Person" ToRole="Rank" />
+          <NavigationProperty Name="PersonPositions" Relationship="IVRModel.FK_PersonPosition_Person" FromRole="Person" ToRole="PersonPosition" />
+          <NavigationProperty Name="PersonRanks" Relationship="IVRModel.FK_PersonRank_Person" FromRole="Person" ToRole="PersonRank" />
           <NavigationProperty Name="Promotions" Relationship="IVRModel.FK_Promotion_Person" FromRole="Person" ToRole="Promotion" />
           <NavigationProperty Name="Works" Relationship="IVRModel.FK_Work_Person" FromRole="Person" ToRole="Work" />
           <NavigationProperty Name="Works1" Relationship="IVRModel.FK_Work_PersonInitiator" FromRole="Person" ToRole="Work" />
+          <NavigationProperty Name="Groups" Relationship="IVRModel.PersonGroup" FromRole="Person" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="PersonPosition">
+          <Key>
+            <PropertyRef Name="IDPerson" />
+            <PropertyRef Name="IDPosition" />
+          </Key>
+          <Property Name="IDPerson" Type="Int32" Nullable="false" />
+          <Property Name="IDPosition" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Person" Relationship="IVRModel.FK_PersonPosition_Person" FromRole="PersonPosition" ToRole="Person" />
+          <NavigationProperty Name="Position" Relationship="IVRModel.FK_PersonPosition_Position" FromRole="PersonPosition" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="PersonRank">
+          <Key>
+            <PropertyRef Name="IDPerson" />
+            <PropertyRef Name="IDRank" />
+          </Key>
+          <Property Name="IDPerson" Type="Int32" Nullable="false" />
+          <Property Name="IDRank" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Person" Relationship="IVRModel.FK_PersonRank_Person" FromRole="PersonRank" ToRole="Person" />
+          <NavigationProperty Name="Rank" Relationship="IVRModel.FK_PersonRank_Rank" FromRole="PersonRank" ToRole="Rank" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -477,7 +642,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="People" Relationship="IVRModel.FK_Person_Position" FromRole="Position" ToRole="Person" />
+          <NavigationProperty Name="PersonPositions" Relationship="IVRModel.FK_PersonPosition_Position" FromRole="Position" ToRole="PersonPosition" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -509,7 +674,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="People" Relationship="IVRModel.FK_Person_Rank" FromRole="Rank" ToRole="Person" />
+          <NavigationProperty Name="PersonRanks" Relationship="IVRModel.FK_PersonRank_Rank" FromRole="Rank" ToRole="PersonRank" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -535,6 +700,30 @@
           <NavigationProperty Name="Person" Relationship="IVRModel.FK_Work_Person" FromRole="Work" ToRole="Person" />
           <NavigationProperty Name="Person1" Relationship="IVRModel.FK_Work_PersonInitiator" FromRole="Work" ToRole="Person" />
         </EntityType>
+        <Association Name="FK_Department_Organization">
+          <End Type="IVRModel.Organization" Role="Organization" Multiplicity="1" />
+          <End Type="IVRModel.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="IDOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Department">
+          <End Type="IVRModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="IVRModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IDDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Organization_Organization">
           <End Type="IVRModel.Organization" Role="Organization" Multiplicity="0..1" />
           <End Type="IVRModel.Organization" Role="Organization1" Multiplicity="*" />
@@ -556,18 +745,6 @@
             </Principal>
             <Dependent Role="Penalty">
               <PropertyRef Name="IDDocumentInitiator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Person_Organization">
-          <End Type="IVRModel.Organization" Role="Organization" Multiplicity="1" />
-          <End Type="IVRModel.Person" Role="Person" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Organization">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="IDOrganization" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -607,27 +784,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Position">
-          <End Type="IVRModel.Position" Role="Position" Multiplicity="1" />
-          <End Type="IVRModel.Person" Role="Person" Multiplicity="*" />
+        <Association Name="FK_PersonPosition_Person">
+          <End Type="IVRModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="IVRModel.PersonPosition" Role="PersonPosition" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Position">
+            <Principal Role="Person">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="IDPosition" />
+            <Dependent Role="PersonPosition">
+              <PropertyRef Name="IDPerson" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Rank">
-          <End Type="IVRModel.Rank" Role="Rank" Multiplicity="1" />
-          <End Type="IVRModel.Person" Role="Person" Multiplicity="*" />
+        <Association Name="FK_PersonRank_Person">
+          <End Type="IVRModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="IVRModel.PersonRank" Role="PersonRank" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Rank">
+            <Principal Role="Person">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="IDRank" />
+            <Dependent Role="PersonRank">
+              <PropertyRef Name="IDPerson" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -667,6 +844,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PersonPosition_Position">
+          <End Type="IVRModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="IVRModel.PersonPosition" Role="PersonPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonPosition">
+              <PropertyRef Name="IDPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRank_Rank">
+          <End Type="IVRModel.Rank" Role="Rank" Multiplicity="1" />
+          <End Type="IVRModel.PersonRank" Role="PersonRank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PersonRank">
+              <PropertyRef Name="IDRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Promotion_PromotionType">
           <End Type="IVRModel.PromotionType" Role="PromotionType" Multiplicity="1" />
           <End Type="IVRModel.Promotion" Role="Promotion" Multiplicity="*" />
@@ -679,15 +880,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="PersonGroup">
+          <End Type="IVRModel.Group" Role="Group" Multiplicity="*" />
+          <End Type="IVRModel.Person" Role="Person" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище IVRModelContainer" CdmEntityContainer="IVREntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="IVRModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="IDOrganization" ColumnName="IDOrganization" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="IVRModel.Group">
               <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="IDDepartment" ColumnName="IDDepartment" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -739,16 +954,30 @@
                 <ScalarProperty Name="JobFamily" ColumnName="JobFamily" />
                 <ScalarProperty Name="Family" ColumnName="Family" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="DateRank" ColumnName="DateRank" />
-                <ScalarProperty Name="DatePosition" ColumnName="DatePosition" />
                 <ScalarProperty Name="YearStart" ColumnName="YearStart" />
                 <ScalarProperty Name="Education" ColumnName="Education" />
                 <ScalarProperty Name="BirthdayInfo" ColumnName="BirthdayInfo" />
-                <ScalarProperty Name="IDRank" ColumnName="IDRank" />
-                <ScalarProperty Name="IDPosition" ColumnName="IDPosition" />
-                <ScalarProperty Name="IDOrganization" ColumnName="IDOrganization" />
+                <ScalarProperty Name="BirthdayDate" ColumnName="BirthdayDate" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonPositions">
+            <EntityTypeMapping TypeName="IVRModel.PersonPosition">
+              <MappingFragment StoreEntitySet="PersonPosition">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IDPosition" ColumnName="IDPosition" />
+                <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonRanks">
+            <EntityTypeMapping TypeName="IVRModel.PersonRank">
+              <MappingFragment StoreEntitySet="PersonRank">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IDRank" ColumnName="IDRank" />
+                <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -814,6 +1043,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="PersonGroup" TypeName="IVRModel.PersonGroup" StoreEntitySet="PersonGroup">
+            <EndProperty Name="Person">
+              <ScalarProperty Name="ID" ColumnName="IDPerson" />
+            </EndProperty>
+            <EndProperty Name="Group">
+              <ScalarProperty Name="ID" ColumnName="IDGroup" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

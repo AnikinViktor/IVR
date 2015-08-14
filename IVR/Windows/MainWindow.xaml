@@ -1,11 +1,12 @@
-﻿<r:RibbonWindow x:Class="IVR.MainWindow"
+﻿<r:RibbonWindow x:Class="IVRClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:IVR"
+        xmlns:local="clr-namespace:IVRClient"
         xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
-        xmlns:vm="clr-namespace:IVR.ViewModels"
+        xmlns:vm="clr-namespace:IVRClient.ViewModels"
+        Icon="/Images/icon.png"
         mc:Ignorable="d"
         Title="Тетради ИВР" Height="350" Width="550" WindowState="Maximized">
     <r:RibbonWindow.Resources>
@@ -46,7 +47,10 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="35" Width="35" Source="/Images/group.png"></Image>
-                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Text="{Binding Path=Name}"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Text="{Binding Path=Name}" Margin="0,0,5,0"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="12" Text="(сотрудников в группе: "></TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="12" Text="{Binding Path=Persons.Count}"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="12" Text=")"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

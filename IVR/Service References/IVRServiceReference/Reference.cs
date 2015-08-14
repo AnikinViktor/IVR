@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IVR.IVRServiceReference {
+namespace IVRClient.IVRServiceReference {
     using System.Runtime.Serialization;
     using System;
     
@@ -29,13 +29,7 @@ namespace IVR.IVRServiceReference {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private IVR.IVRServiceReference.PersonContract[] PersonsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StartYearField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StopYearField;
+        private IVRClient.IVRServiceReference.PersonContract[] PersonsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -74,7 +68,7 @@ namespace IVR.IVRServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public IVR.IVRServiceReference.PersonContract[] Persons {
+        public IVRClient.IVRServiceReference.PersonContract[] Persons {
             get {
                 return this.PersonsField;
             }
@@ -82,32 +76,6 @@ namespace IVR.IVRServiceReference {
                 if ((object.ReferenceEquals(this.PersonsField, value) != true)) {
                     this.PersonsField = value;
                     this.RaisePropertyChanged("Persons");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int StartYear {
-            get {
-                return this.StartYearField;
-            }
-            set {
-                if ((this.StartYearField.Equals(value) != true)) {
-                    this.StartYearField = value;
-                    this.RaisePropertyChanged("StartYear");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int StopYear {
-            get {
-                return this.StopYearField;
-            }
-            set {
-                if ((this.StopYearField.Equals(value) != true)) {
-                    this.StopYearField = value;
-                    this.RaisePropertyChanged("StopYear");
                 }
             }
         }
@@ -132,10 +100,52 @@ namespace IVR.IVRServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime BirthdayDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BirthdayInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommunityInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EducationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FIOField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FamilyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HobbyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string JobFamilyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PresentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReflectionInFamilyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReflectionInJobField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SportField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> YearStartField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -144,6 +154,71 @@ namespace IVR.IVRServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime BirthdayDate {
+            get {
+                return this.BirthdayDateField;
+            }
+            set {
+                if ((this.BirthdayDateField.Equals(value) != true)) {
+                    this.BirthdayDateField = value;
+                    this.RaisePropertyChanged("BirthdayDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BirthdayInfo {
+            get {
+                return this.BirthdayInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BirthdayInfoField, value) != true)) {
+                    this.BirthdayInfoField = value;
+                    this.RaisePropertyChanged("BirthdayInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CommunityInfo {
+            get {
+                return this.CommunityInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommunityInfoField, value) != true)) {
+                    this.CommunityInfoField = value;
+                    this.RaisePropertyChanged("CommunityInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Education {
+            get {
+                return this.EducationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EducationField, value) != true)) {
+                    this.EducationField = value;
+                    this.RaisePropertyChanged("Education");
+                }
             }
         }
         
@@ -161,6 +236,32 @@ namespace IVR.IVRServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Family {
+            get {
+                return this.FamilyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FamilyField, value) != true)) {
+                    this.FamilyField = value;
+                    this.RaisePropertyChanged("Family");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hobby {
+            get {
+                return this.HobbyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HobbyField, value) != true)) {
+                    this.HobbyField = value;
+                    this.RaisePropertyChanged("Hobby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int ID {
             get {
                 return this.IDField;
@@ -169,6 +270,97 @@ namespace IVR.IVRServiceReference {
                 if ((this.IDField.Equals(value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string JobFamily {
+            get {
+                return this.JobFamilyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JobFamilyField, value) != true)) {
+                    this.JobFamilyField = value;
+                    this.RaisePropertyChanged("JobFamily");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Presents {
+            get {
+                return this.PresentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PresentsField, value) != true)) {
+                    this.PresentsField = value;
+                    this.RaisePropertyChanged("Presents");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReflectionInFamily {
+            get {
+                return this.ReflectionInFamilyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReflectionInFamilyField, value) != true)) {
+                    this.ReflectionInFamilyField = value;
+                    this.RaisePropertyChanged("ReflectionInFamily");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReflectionInJob {
+            get {
+                return this.ReflectionInJobField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReflectionInJobField, value) != true)) {
+                    this.ReflectionInJobField = value;
+                    this.RaisePropertyChanged("ReflectionInJob");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Sport {
+            get {
+                return this.SportField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SportField, value) != true)) {
+                    this.SportField = value;
+                    this.RaisePropertyChanged("Sport");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string War {
+            get {
+                return this.WarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WarField, value) != true)) {
+                    this.WarField = value;
+                    this.RaisePropertyChanged("War");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> YearStart {
+            get {
+                return this.YearStartField;
+            }
+            set {
+                if ((this.YearStartField.Equals(value) != true)) {
+                    this.YearStartField = value;
+                    this.RaisePropertyChanged("YearStart");
                 }
             }
         }
@@ -187,20 +379,20 @@ namespace IVR.IVRServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IVRServiceReference.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroups", ReplyAction="http://tempuri.org/IService/GetGroupsResponse")]
-        IVR.IVRServiceReference.GroupContract[] GetGroups();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroupsWithPersons", ReplyAction="http://tempuri.org/IService/GetGroupsWithPersonsResponse")]
+        IVRClient.IVRServiceReference.GroupContract[] GetGroupsWithPersons();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroups", ReplyAction="http://tempuri.org/IService/GetGroupsResponse")]
-        System.Threading.Tasks.Task<IVR.IVRServiceReference.GroupContract[]> GetGroupsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroupsWithPersons", ReplyAction="http://tempuri.org/IService/GetGroupsWithPersonsResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : IVR.IVRServiceReference.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : IVRClient.IVRServiceReference.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<IVR.IVRServiceReference.IService>, IVR.IVRServiceReference.IService {
+    public partial class ServiceClient : System.ServiceModel.ClientBase<IVRClient.IVRServiceReference.IService>, IVRClient.IVRServiceReference.IService {
         
         public ServiceClient() {
         }
@@ -221,12 +413,12 @@ namespace IVR.IVRServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public IVR.IVRServiceReference.GroupContract[] GetGroups() {
-            return base.Channel.GetGroups();
+        public IVRClient.IVRServiceReference.GroupContract[] GetGroupsWithPersons() {
+            return base.Channel.GetGroupsWithPersons();
         }
         
-        public System.Threading.Tasks.Task<IVR.IVRServiceReference.GroupContract[]> GetGroupsAsync() {
-            return base.Channel.GetGroupsAsync();
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync() {
+            return base.Channel.GetGroupsWithPersonsAsync();
         }
     }
 }

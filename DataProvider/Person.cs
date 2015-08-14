@@ -18,21 +18,20 @@ namespace DataProvider
         public Person()
         {
             this.Penalties = new HashSet<Penalty>();
+            this.PersonPositions = new HashSet<PersonPosition>();
+            this.PersonRanks = new HashSet<PersonRank>();
             this.Promotions = new HashSet<Promotion>();
             this.Works = new HashSet<Work>();
             this.Works1 = new HashSet<Work>();
+            this.Groups = new HashSet<Group>();
         }
     
         public int ID { get; set; }
         public string FIO { get; set; }
-        public int IDOrganization { get; set; }
-        public int IDPosition { get; set; }
-        public int IDRank { get; set; }
+        public System.DateTime BirthdayDate { get; set; }
         public string BirthdayInfo { get; set; }
         public string Education { get; set; }
-        public Nullable<byte> YearStart { get; set; }
-        public Nullable<System.DateTime> DatePosition { get; set; }
-        public Nullable<System.DateTime> DateRank { get; set; }
+        public Nullable<int> YearStart { get; set; }
         public string Address { get; set; }
         public string Family { get; set; }
         public string JobFamily { get; set; }
@@ -44,16 +43,19 @@ namespace DataProvider
         public string ReflectionInJob { get; set; }
         public string ReflectionInFamily { get; set; }
     
-        public virtual Organization Organization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Penalty> Penalties { get; set; }
-        public virtual Position Position { get; set; }
-        public virtual Rank Rank { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonPosition> PersonPositions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonRank> PersonRanks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Promotion> Promotions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Work> Works { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Work> Works1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

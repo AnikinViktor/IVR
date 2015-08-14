@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IVRClient", "IVR\IVRClient.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IVRService", "IVRService\IVRService.csproj", "{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider", "DataProvider\DataProvider.csproj", "{0744F79E-812B-4A66-89F6-1A0B3102133D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D40822-9AC4-4C3A-B8FC-BB9D0EE1FB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0744F79E-812B-4A66-89F6-1A0B3102133D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

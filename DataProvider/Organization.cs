@@ -17,9 +17,9 @@ namespace DataProvider
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Organization()
         {
+            this.Departments = new HashSet<Department>();
             this.Organization1 = new HashSet<Organization>();
             this.Penalties = new HashSet<Penalty>();
-            this.People = new HashSet<Person>();
             this.Promotions = new HashSet<Promotion>();
         }
     
@@ -29,12 +29,12 @@ namespace DataProvider
         public string OGRN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Department> Departments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Organization> Organization1 { get; set; }
         public virtual Organization Organization2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Penalty> Penalties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person> People { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Promotion> Promotions { get; set; }
     }

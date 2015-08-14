@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IVR.UserControls
+namespace IVRClient.UserControls
 {
     /// <summary>
     /// Логика взаимодействия для UserControl1.xaml

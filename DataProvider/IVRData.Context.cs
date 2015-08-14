@@ -25,11 +25,14 @@ namespace DataProvider
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
         public virtual DbSet<Penalty> Penalties { get; set; }
         public virtual DbSet<PenaltyType> PenaltyTypes { get; set; }
         public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<PersonPosition> PersonPositions { get; set; }
+        public virtual DbSet<PersonRank> PersonRanks { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<PromotionType> PromotionTypes { get; set; }

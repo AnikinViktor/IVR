@@ -1,5 +1,5 @@
-﻿using IVR.DataModel;
-using IVR.IVRServiceReference;
+﻿using IVRClient.DataModel;
+using IVRClient.IVRServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IVR.ViewModels
+namespace IVRClient.ViewModels
 {
     class GroupsViewModel : BaseViewModel
     {
@@ -30,7 +30,7 @@ namespace IVR.ViewModels
 
         public override void LoadData()
         {
-            Groups = new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroups()));
+            Groups = new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroupsWithPersons()));
         }
     }
 }

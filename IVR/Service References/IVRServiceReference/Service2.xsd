@@ -11,8 +11,6 @@
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Persons" nillable="true" type="tns:ArrayOfPersonContract" />
-      <xs:element minOccurs="0" name="StartYear" type="xs:int" />
-      <xs:element minOccurs="0" name="StopYear" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GroupContract" nillable="true" type="tns:GroupContract" />
@@ -24,8 +22,22 @@
   <xs:element name="ArrayOfPersonContract" nillable="true" type="tns:ArrayOfPersonContract" />
   <xs:complexType name="PersonContract">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BirthdayDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BirthdayInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommunityInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Education" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Family" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hobby" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobFamily" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Presents" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReflectionInFamily" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReflectionInJob" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="War" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="YearStart" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PersonContract" nillable="true" type="tns:PersonContract" />

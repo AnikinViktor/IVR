@@ -1,4 +1,4 @@
-﻿using IVR.IVRServiceReference;
+﻿using IVRClient.IVRServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
-namespace IVR.DataModel
+namespace IVRClient.DataModel
 {
     public class Person : BaseDataModel
     {
