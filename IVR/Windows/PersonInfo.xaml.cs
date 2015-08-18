@@ -32,5 +32,10 @@ namespace IVRClient
             this.vm.Person = person;
             this.Title = person.FIO;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            vm.LoadDataAsync();
+        }
     }
 }

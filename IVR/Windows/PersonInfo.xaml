@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:IVRClient"
         xmlns:uc="clr-namespace:IVRClient.UserControls"
         xmlns:vm="clr-namespace:IVRClient.ViewModels"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         WindowState="Maximized"
+        Loaded="Window_Loaded"
         Icon="/Images/person.png"
         Title="PersonInfo" Height="600" Width="770">
     <Window.Resources>
@@ -21,244 +23,246 @@
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="0,0,5,0"></Setter>
         </Style>
-    </Window.Resources>  
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+    </Window.Resources>
+    <xctk:BusyIndicator Style="{StaticResource busyIndicatorContent}" IsBusy="{Binding Source={StaticResource viewModel}, Path=Loading}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Image Source="/Images/info.png" Margin="0,0,10,0"></Image>
-            <TextBlock VerticalAlignment="Center" FontSize="14" Text="Выберите интересующий вас раздел:"></TextBlock>
-        </StackPanel>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Image Source="/Images/info.png" Margin="0,0,10,0"></Image>
+                <TextBlock VerticalAlignment="Center" FontSize="14" Text="Выберите интересующий вас раздел:"></TextBlock>
+            </StackPanel>
 
-        <TabControl Grid.Row="1">
+            <TabControl Grid.Row="1">
 
-            <TabItem Header="Анкета">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="300"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="10"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                <TabItem Header="Анкета">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="10"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
 
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="0" Text="Фамилия, имя, отчество:"></TextBlock>
-                    <TextBox Text="{Binding Source={StaticResource viewModel}, Path=Person.FIO, Mode=TwoWay, NotifyOnValidationError=True, 
-                        ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource validationErrorTemplate}" Grid.Column="1" Grid.Row="0">
-                    </TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="0" Text="Фамилия, имя, отчество:"></TextBlock>
+                        <TextBox Text="{Binding Source={StaticResource viewModel}, Path=Person.FIO, Mode=TwoWay, NotifyOnValidationError=True, 
+                            ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource validationErrorTemplate}" Grid.Column="1" Grid.Row="0">
+                        </TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="2" Text="Дата рождения:"></TextBlock>
-                    <DatePicker Grid.Column="1" Grid.Row="2" Width="100" HorizontalAlignment="Left"></DatePicker>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="2" Text="Дата рождения:"></TextBlock>
+                        <DatePicker Grid.Column="1" Grid.Row="2" Width="100" HorizontalAlignment="Left"></DatePicker>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="4" Text="Место рождения:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="4"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="4" Text="Место рождения:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="4"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="6" Text="Образование:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="6"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="6" Text="Образование:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="6"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="8" Text="Год вступления на службу УИС:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="8" Width="80" HorizontalAlignment="Left"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="8" Text="Год вступления на службу УИС:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="8" Width="80" HorizontalAlignment="Left"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="10" Text="Домашний адрес и телефон:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="10"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="10" Text="Домашний адрес и телефон:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="10"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="12" Text="Состав семьи:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="12"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="12" Text="Состав семьи:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="12"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="14" Text="ФИО, место работы жены (мужа), рабочий телефон:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="14"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="14" Text="ФИО, место работы жены (мужа), рабочий телефон:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="14"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="16" Text="Общественное поручение:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="16"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="16" Text="Общественное поручение:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="16"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="18" Text="Спортивные разряды:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="18"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="18" Text="Спортивные разряды:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="18"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="20" Text="Участие в боевых действиях:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="20"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="20" Text="Участие в боевых действиях:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="20"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="22" Text="Правительственные награды и нагрудные знаки:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="22"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="22" Text="Правительственные награды и нагрудные знаки:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="22"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="24" Text="Любимое занятие, увлечение:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="24"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="24" Text="Любимое занятие, увлечение:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="24"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="26" Text="Отношение к исполнению служебных обязанностей:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="26"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="26" Text="Отношение к исполнению служебных обязанностей:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="26"></TextBox>
 
-                    <TextBlock Style="{StaticResource labelStyle}" Grid.Row="28" Text="Взаимоотнощения в семье:"></TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="28"></TextBox>
+                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="28" Text="Взаимоотнощения в семье:"></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="28"></TextBox>
 
-                    <StackPanel Grid.Row="31" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Width="70" Content="Сохранить" Margin="0,0,10,0"></Button>
-                        <Button Width="70" Content="Отмена"></Button>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
+                        <StackPanel Grid.Row="31" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Width="70" Content="Сохранить" Margin="0,0,10,0"></Button>
+                            <Button Width="70" Content="Отмена"></Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
 
-            <TabItem Header="Проводимая работа">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="5"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <TabItem Header="Проводимая работа">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить мероприятие" EditButtonTitle="Редактировать выделенную запись" DeleteButtonTitle="Удалить выделенную запись"></uc:Buttons>
+                        <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить мероприятие" EditButtonTitle="Редактировать выделенную запись" DeleteButtonTitle="Удалить выделенную запись"></uc:Buttons>
                     
-                    <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Мероприятия"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Выводы"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Кем проведена"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
+                        <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Мероприятия"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Выводы"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Кем проведена"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
 
-            <TabItem Header="Поощрения">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="5"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <TabItem Header="Поощрения">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить поощрение" EditButtonTitle="Редактировать поощрение" DeleteButtonTitle="Удалить поощрение"></uc:Buttons>
+                        <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить поощрение" EditButtonTitle="Редактировать поощрение" DeleteButtonTitle="Удалить поощрение"></uc:Buttons>
 
-                    <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Кем поощрен"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Вид поощрения"></DataGridTextColumn>
-                            <DataGridTextColumn Header="За что поощрен"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
+                        <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Кем поощрен"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Вид поощрения"></DataGridTextColumn>
+                                <DataGridTextColumn Header="За что поощрен"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
 
-            <TabItem Header="Взыскания">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="5"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <TabItem Header="Взыскания">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить взыскание" EditButtonTitle="Редактировать взыскание" DeleteButtonTitle="Удалить взыскание"></uc:Buttons>
+                        <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить взыскание" EditButtonTitle="Редактировать взыскание" DeleteButtonTitle="Удалить взыскание"></uc:Buttons>
 
-                    <DataGrid Grid.Row="2"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Кем наложено"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Вид взыскания"></DataGridTextColumn>
-                            <DataGridTextColumn Header="За какое нарушение"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
+                        <DataGrid Grid.Row="2"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Кем наложено"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Вид взыскания"></DataGridTextColumn>
+                                <DataGridTextColumn Header="За какое нарушение"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
 
-            <TabItem Header="Диагностика">
+                <TabItem Header="Диагностика">
 
-            </TabItem>
+                </TabItem>
 
-            <TabItem Header="Характеристики">
+                <TabItem Header="Характеристики">
 
-            </TabItem>
+                </TabItem>
 
-            <TabItem Header="Звания">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="5"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <TabItem Header="Звания">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <uc:Buttons Grid.Row="0" AddButtonTitle="Присвоить звание" EditButtonTitle="Редактировать звание" DeleteButtonTitle="Удалить звание"></uc:Buttons>
+                        <uc:Buttons Grid.Row="0" AddButtonTitle="Присвоить звание" EditButtonTitle="Редактировать звание" DeleteButtonTitle="Удалить звание"></uc:Buttons>
 
-                    <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Дата присвоения"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Звание"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
+                        <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата присвоения"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Звание"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
 
-            <TabItem Header="Должности">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="5"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <TabItem Header="Должности">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <uc:Buttons Grid.Row="0" AddButtonTitle="Внести должность" EditButtonTitle="Редактировать должность" DeleteButtonTitle="Удалить должность"></uc:Buttons>
+                        <uc:Buttons Grid.Row="0" AddButtonTitle="Внести должность" EditButtonTitle="Редактировать должность" DeleteButtonTitle="Удалить должность"></uc:Buttons>
 
-                    <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Дата вступления"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Должность"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Группы">
+                        <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата вступления"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Должность"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Группы">
 
-            </TabItem>
-        </TabControl>
-    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </xctk:BusyIndicator>
 </Window>

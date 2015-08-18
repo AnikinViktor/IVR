@@ -34,22 +34,51 @@ namespace IVRService
             }
 
             return result;
-            //List<GroupContract> result = new List<GroupContract>();
+        }
 
-            ////PersonContract person = new PersonContract
-            ////{
-            ////    FIO = "Аникин Виктор Геннадьевич"
-            ////};
+        public List<PenaltyContract> GetPenalties(int IDPerson, int year)
+        {
+            List<PenaltyContract> result = new List<PenaltyContract>();
 
-            ////GroupContract group = new GroupContract
-            ////{
-            ////    Name = "Группа ИТО, С и В",
-            ////    Persons = new List<PersonContract> { person }
-            ////};
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach (Penalty p in ctx.Penalties.Where(x => x.IDPerson == IDPerson).OrderBy(x => x.Date))
+                {
+                    result.Add(new PenaltyContract(p));
+                }
+            }
 
-            //result.Add(group);
+            return result;
+        }
 
-            //return result;
+        public List<PromotionContract> GetPromotions(int IDPerson, int year)
+        {
+            List<PromotionContract> result = new List<PromotionContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach (Promotion p in ctx.Promotions.Where(x => x.IDPerson == IDPerson).OrderBy(x => x.Date))
+                {
+                    result.Add(new PromotionContract(p));
+                }
+            }
+
+            return result;
+        }
+
+        public List<WorkContract> GetWorks(int IDPerson, int year)
+        {
+            List<WorkContract> result = new List<WorkContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach (Work w in ctx.Works.Where(x => x.IDPerson == IDPerson).OrderBy(x => x.Date))
+                {
+                    result.Add(new WorkContract(w));
+                }
+            }
+
+            return result;
         }
     }
 }

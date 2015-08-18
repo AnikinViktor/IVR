@@ -375,6 +375,477 @@ namespace IVRClient.IVRServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WorkContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class WorkContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPersonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPersonInitiatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime InputDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResolutionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WorkDescriptionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPerson {
+            get {
+                return this.IDPersonField;
+            }
+            set {
+                if ((this.IDPersonField.Equals(value) != true)) {
+                    this.IDPersonField = value;
+                    this.RaisePropertyChanged("IDPerson");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPersonInitiator {
+            get {
+                return this.IDPersonInitiatorField;
+            }
+            set {
+                if ((this.IDPersonInitiatorField.Equals(value) != true)) {
+                    this.IDPersonInitiatorField = value;
+                    this.RaisePropertyChanged("IDPersonInitiator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime InputDateTime {
+            get {
+                return this.InputDateTimeField;
+            }
+            set {
+                if ((this.InputDateTimeField.Equals(value) != true)) {
+                    this.InputDateTimeField = value;
+                    this.RaisePropertyChanged("InputDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Resolution {
+            get {
+                return this.ResolutionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResolutionField, value) != true)) {
+                    this.ResolutionField = value;
+                    this.RaisePropertyChanged("Resolution");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WorkDescription {
+            get {
+                return this.WorkDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkDescriptionField, value) != true)) {
+                    this.WorkDescriptionField = value;
+                    this.RaisePropertyChanged("WorkDescription");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PenaltyContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class PenaltyContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentDestroyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDDocumentInitiatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPenaltyTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPersonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime InputDateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Document {
+            get {
+                return this.DocumentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentField, value) != true)) {
+                    this.DocumentField = value;
+                    this.RaisePropertyChanged("Document");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DocumentDestroy {
+            get {
+                return this.DocumentDestroyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentDestroyField, value) != true)) {
+                    this.DocumentDestroyField = value;
+                    this.RaisePropertyChanged("DocumentDestroy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDDocumentInitiator {
+            get {
+                return this.IDDocumentInitiatorField;
+            }
+            set {
+                if ((this.IDDocumentInitiatorField.Equals(value) != true)) {
+                    this.IDDocumentInitiatorField = value;
+                    this.RaisePropertyChanged("IDDocumentInitiator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPenaltyType {
+            get {
+                return this.IDPenaltyTypeField;
+            }
+            set {
+                if ((this.IDPenaltyTypeField.Equals(value) != true)) {
+                    this.IDPenaltyTypeField = value;
+                    this.RaisePropertyChanged("IDPenaltyType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPerson {
+            get {
+                return this.IDPersonField;
+            }
+            set {
+                if ((this.IDPersonField.Equals(value) != true)) {
+                    this.IDPersonField = value;
+                    this.RaisePropertyChanged("IDPerson");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime InputDateTime {
+            get {
+                return this.InputDateTimeField;
+            }
+            set {
+                if ((this.InputDateTimeField.Equals(value) != true)) {
+                    this.InputDateTimeField = value;
+                    this.RaisePropertyChanged("InputDateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PromotionContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class PromotionContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDDocumentInitiatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPersonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPromotionTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime InputDateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Document {
+            get {
+                return this.DocumentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentField, value) != true)) {
+                    this.DocumentField = value;
+                    this.RaisePropertyChanged("Document");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDDocumentInitiator {
+            get {
+                return this.IDDocumentInitiatorField;
+            }
+            set {
+                if ((this.IDDocumentInitiatorField.Equals(value) != true)) {
+                    this.IDDocumentInitiatorField = value;
+                    this.RaisePropertyChanged("IDDocumentInitiator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPerson {
+            get {
+                return this.IDPersonField;
+            }
+            set {
+                if ((this.IDPersonField.Equals(value) != true)) {
+                    this.IDPersonField = value;
+                    this.RaisePropertyChanged("IDPerson");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPromotionType {
+            get {
+                return this.IDPromotionTypeField;
+            }
+            set {
+                if ((this.IDPromotionTypeField.Equals(value) != true)) {
+                    this.IDPromotionTypeField = value;
+                    this.RaisePropertyChanged("IDPromotionType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime InputDateTime {
+            get {
+                return this.InputDateTimeField;
+            }
+            set {
+                if ((this.InputDateTimeField.Equals(value) != true)) {
+                    this.InputDateTimeField = value;
+                    this.RaisePropertyChanged("InputDateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IVRServiceReference.IService")]
     public interface IService {
@@ -384,6 +855,24 @@ namespace IVRClient.IVRServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroupsWithPersons", ReplyAction="http://tempuri.org/IService/GetGroupsWithPersonsResponse")]
         System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetWorks", ReplyAction="http://tempuri.org/IService/GetWorksResponse")]
+        IVRClient.IVRServiceReference.WorkContract[] GetWorks(int IDPerson, int year);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetWorks", ReplyAction="http://tempuri.org/IService/GetWorksResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.WorkContract[]> GetWorksAsync(int IDPerson, int year);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPenalties", ReplyAction="http://tempuri.org/IService/GetPenaltiesResponse")]
+        IVRClient.IVRServiceReference.PenaltyContract[] GetPenalties(int IDPerson, int year);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPenalties", ReplyAction="http://tempuri.org/IService/GetPenaltiesResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PenaltyContract[]> GetPenaltiesAsync(int IDPerson, int year);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotions", ReplyAction="http://tempuri.org/IService/GetPromotionsResponse")]
+        IVRClient.IVRServiceReference.PromotionContract[] GetPromotions(int IDPerson, int year);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotions", ReplyAction="http://tempuri.org/IService/GetPromotionsResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionContract[]> GetPromotionsAsync(int IDPerson, int year);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -419,6 +908,30 @@ namespace IVRClient.IVRServiceReference {
         
         public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync() {
             return base.Channel.GetGroupsWithPersonsAsync();
+        }
+        
+        public IVRClient.IVRServiceReference.WorkContract[] GetWorks(int IDPerson, int year) {
+            return base.Channel.GetWorks(IDPerson, year);
+        }
+        
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.WorkContract[]> GetWorksAsync(int IDPerson, int year) {
+            return base.Channel.GetWorksAsync(IDPerson, year);
+        }
+        
+        public IVRClient.IVRServiceReference.PenaltyContract[] GetPenalties(int IDPerson, int year) {
+            return base.Channel.GetPenalties(IDPerson, year);
+        }
+        
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PenaltyContract[]> GetPenaltiesAsync(int IDPerson, int year) {
+            return base.Channel.GetPenaltiesAsync(IDPerson, year);
+        }
+        
+        public IVRClient.IVRServiceReference.PromotionContract[] GetPromotions(int IDPerson, int year) {
+            return base.Channel.GetPromotions(IDPerson, year);
+        }
+        
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionContract[]> GetPromotionsAsync(int IDPerson, int year) {
+            return base.Channel.GetPromotionsAsync(IDPerson, year);
         }
     }
 }

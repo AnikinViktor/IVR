@@ -1,85 +1,103 @@
-﻿<r:RibbonWindow x:Class="IVRClient.MainWindow"
+﻿<Window x:Class="IVRClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IVRClient"
-        xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
         xmlns:vm="clr-namespace:IVRClient.ViewModels"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Icon="/Images/icon.png"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Тетради ИВР" Height="350" Width="550" WindowState="Maximized">
-    <r:RibbonWindow.Resources>
+    <Window.Resources>
         <vm:GroupsViewModel x:Key="viewModel"></vm:GroupsViewModel>
 
-        <Style TargetType="{x:Type r:RibbonTab}">
+        <!--<Style TargetType="{x:Type r:RibbonTab}">
             <Setter Property="IsSelected" Value="{Binding Source={StaticResource viewModel}, Path=IsSelected}" />
-        </Style>
-    </r:RibbonWindow.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+        </Style>-->
+    </Window.Resources>
+    <xctk:BusyIndicator Style="{StaticResource busyIndicatorContent}" IsBusy="{Binding Source={StaticResource viewModel}, Path=Loading}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <r:Ribbon Grid.Row="0">
-            <r:RibbonTab Header="Группы">
-                <r:RibbonGroup>
-                    <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить группу"></r:RibbonButton>
-                    <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать группу"></r:RibbonButton>
-                    <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить группу"></r:RibbonButton>
-                </r:RibbonGroup>
-            </r:RibbonTab>
+            <!--<r:Ribbon Grid.Row="0">
+                <r:RibbonTab Header="Группы">
+                    <r:RibbonGroup>
+                        <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить группу"></r:RibbonButton>
+                        <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать группу"></r:RibbonButton>
+                        <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить группу"></r:RibbonButton>
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                -->
             <!--<r:RibbonTab Header="Сотрудники">
-                <r:RibbonGroup>
-                    <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить сотрудника"></r:RibbonButton>
-                    <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать данные сотрудника"></r:RibbonButton>
-                    <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить сотрудника"></r:RibbonButton>
-                </r:RibbonGroup>
-            </r:RibbonTab>-->
-        </r:Ribbon>
+                    <r:RibbonGroup>
+                        <r:RibbonButton LargeImageSource="/Images/add.png" Label="Добавить сотрудника"></r:RibbonButton>
+                        <r:RibbonButton LargeImageSource="/Images/edit.png" Label="Редактировать данные сотрудника"></r:RibbonButton>
+                        <r:RibbonButton LargeImageSource="/Images/delete.png" Label="Удалить сотрудника"></r:RibbonButton>
+                    </r:RibbonGroup>
+                </r:RibbonTab>-->
+            <!--
+            </r:Ribbon>-->
 
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Source={StaticResource viewModel}, Path=Groups}" AutoGenerateColumns="False" SelectionMode="Single" 
-                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Height="35" Width="35" Source="/Images/group.png"></Image>
-                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Text="{Binding Path=Name}" Margin="0,0,5,0"></TextBlock>
-                                <TextBlock VerticalAlignment="Center" FontSize="12" Text="(сотрудников в группе: "></TextBlock>
-                                <TextBlock VerticalAlignment="Center" FontSize="12" Text="{Binding Path=Persons.Count}"></TextBlock>
-                                <TextBlock VerticalAlignment="Center" FontSize="12" Text=")"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <DataGrid ItemsSource="{Binding Persons}" AutoGenerateColumns="False" SelectionMode="Single" GridLinesVisibility="None" 
-                        CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
-                        <DataGrid.Resources>
-                            <Style TargetType="{x:Type DataGridRow}">
-                                <EventSetter Event="MouseDoubleClick" Handler="PersonRow_DoubleClick"/>
-                            </Style>
-                        </DataGrid.Resources>
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
-                                            <Image Height="35" Width="35" Source="/Images/person.png"></Image>
-                                            <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Text="{Binding Path=FIO}"></TextBlock>
+            <!--<StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Image Source="/Images/info.png" Margin="0,0,10,0"></Image>
+                <TextBlock VerticalAlignment="Center" FontSize="14" Text="Выберите интересующий вас раздел:"></TextBlock>
+            </StackPanel>-->
+
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Source={StaticResource viewModel}, Path=Groups}" AutoGenerateColumns="False" SelectionMode="Single" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="35" Width="35" Source="/Images/group.png"></Image>
+                                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Text="{Binding Path=Name}" Margin="0,0,5,0"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" FontSize="12" Text="(сотрудников в группе: "></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" FontSize="12" Text="{Binding Path=Persons.Count}"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" FontSize="12" Text=")"></TextBlock>
+                                    <Button Margin="20,0,0,0" Height="30">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/add.png" Height="10" Width="10" VerticalAlignment="Center"></Image>
+                                            <Image Source="/Images/person.png" Height="20" Width="20" VerticalAlignment="Center"></Image>
+                                            <TextBlock Text="Добавить сотрудника в группу" VerticalAlignment="Center"></TextBlock>
                                         </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
-    </Grid>
-</r:RibbonWindow>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <DataGrid ItemsSource="{Binding Persons}" AutoGenerateColumns="False" SelectionMode="Single" GridLinesVisibility="None" 
+                            CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="PersonRow_DoubleClick"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                                <Image Height="35" Width="35" Source="/Images/person.png"></Image>
+                                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Text="{Binding Path=FIO}"></TextBlock>
+                                                <Button Margin="20,0,0,0" Height="30" Content="Просмотреть дневник"></Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+        </Grid>
+    </xctk:BusyIndicator>
+</Window>

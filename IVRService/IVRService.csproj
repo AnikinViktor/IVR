@@ -75,9 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContracts\GroupContract.cs" />
+    <Compile Include="DataContracts\PenaltyContract.cs" />
+    <Compile Include="DataContracts\PenaltyTypeContract.cs" />
     <Compile Include="DataContracts\PersonContract.cs" />
+    <Compile Include="DataContracts\PromotionContract.cs" />
+    <Compile Include="DataContracts\PromotionTypeContract.cs" />
     <Compile Include="DataContracts\RankContract.cs" />
     <Compile Include="DataContracts\RankPersonContract.cs" />
+    <Compile Include="DataContracts\WorkContract.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
     </Compile>

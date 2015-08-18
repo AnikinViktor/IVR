@@ -3,6 +3,7 @@ using IVRClient.IVRServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,14 @@ namespace IVRClient.ViewModels
             set { LoadData(); }
         }
 
-        public override void LoadData()
+        protected override object LoadData()
         {
-            Groups = new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroupsWithPersons()));
+            return new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroupsWithPersons()));
+        }
+
+        protected override void SetLoadingResult(RunWorkerCompletedEventArgs e)
+        {
+            Groups = (ObservableCollection<Group>)e.Result;
         }
     }
 }

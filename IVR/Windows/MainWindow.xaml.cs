@@ -21,7 +21,7 @@ namespace IVRClient
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : RibbonWindow
+    public partial class MainWindow : Window
     {
         private GroupsViewModel vm
         {
@@ -31,8 +31,6 @@ namespace IVRClient
         public MainWindow()
         {
             InitializeComponent();
-            IVRServiceReference.ServiceClient ctx = new IVRServiceReference.ServiceClient();
-            
         }
 
         private void PersonRow_DoubleClick(object sender, RoutedEventArgs e)
@@ -41,6 +39,11 @@ namespace IVRClient
 
             PersonInfo personWindow = new PersonInfo((Person)row.Item);
             personWindow.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            vm.LoadDataAsync();
         }
     }
 }

@@ -77,6 +77,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\Extended WPF Toolkit Binaries\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -86,8 +89,14 @@
     <Compile Include="Application.cs" />
     <Compile Include="DataModel\BaseDataModel.cs" />
     <Compile Include="DataModel\Group.cs" />
-    <Compile Include="DataModel\Person\Person.cs" />
+    <Compile Include="DataModel\Penalty.cs" />
+    <Compile Include="DataModel\Person.cs" />
+    <Compile Include="DataModel\Promotion.cs" />
     <Compile Include="DataModel\Rank.cs" />
+    <Compile Include="DataModel\Work.cs" />
+    <Compile Include="UserControls\Info.xaml.cs">
+      <DependentUpon>Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\BaseEditWindow.xaml.cs">
       <DependentUpon>BaseEditWindow.xaml</DependentUpon>
     </Compile>
@@ -106,6 +115,10 @@
     <Compile Include="ViewModels\GroupsViewModel.cs" />
     <Compile Include="ViewModels\PersonInfoViewModel.cs" />
     <Page Include="DictionaryResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +171,15 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.GroupContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PenaltyContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PromotionContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.WorkContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\IVRServiceReference\Service.wsdl" />

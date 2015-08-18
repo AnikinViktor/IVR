@@ -15,28 +15,14 @@ namespace IVRService
     {
         [OperationContract]
         List<GroupContract> GetGroupsWithPersons();
-    }
 
+        [OperationContract]
+        List<WorkContract> GetWorks(int IDPerson, int year);
 
-    // Используйте контракт данных, как показано в примере ниже, чтобы добавить составные типы к операциям служб.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
+        [OperationContract]
+        List<PenaltyContract> GetPenalties(int IDPerson, int year);
 
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        [OperationContract]
+        List<PromotionContract> GetPromotions(int IDPerson, int year);
     }
 }

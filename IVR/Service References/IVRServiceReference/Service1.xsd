@@ -13,4 +13,49 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetWorks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
+        <xs:element minOccurs="0" name="year" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetWorksResult" nillable="true" type="q2:ArrayOfWorkContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPenalties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
+        <xs:element minOccurs="0" name="year" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPenaltiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPenaltiesResult" nillable="true" type="q3:ArrayOfPenaltyContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPromotions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
+        <xs:element minOccurs="0" name="year" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPromotionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPromotionsResult" nillable="true" type="q4:ArrayOfPromotionContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
