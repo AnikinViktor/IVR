@@ -86,7 +86,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Application.cs" />
+    <Compile Include="Calendar\Day.cs" />
+    <Compile Include="Calendar\Week.cs" />
+    <Compile Include="Converters\DayToColorConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="DataModel\BaseDataModel.cs" />
     <Compile Include="DataModel\Group.cs" />
     <Compile Include="DataModel\Penalty.cs" />
@@ -97,8 +101,12 @@
     <Compile Include="UserControls\Info.xaml.cs">
       <DependentUpon>Info.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CalendarViewModel.cs" />
     <Compile Include="Windows\BaseEditWindow.xaml.cs">
       <DependentUpon>BaseEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CalendarWindow.xaml.cs">
+      <DependentUpon>CalendarWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\PersonInfo.xaml.cs">
       <DependentUpon>PersonInfo.xaml</DependentUpon>
@@ -123,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\BaseEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CalendarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,6 +263,7 @@
   <ItemGroup>
     <Resource Include="Images\icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

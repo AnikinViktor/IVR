@@ -38,6 +38,9 @@ namespace IVRService
 
         public List<PenaltyContract> GetPenalties(int IDPerson, int year)
         {
+            DateTime startYear = new DateTime(year, 1, 1);
+            DateTime stopYear = new DateTime(year, 12, 31);
+
             List<PenaltyContract> result = new List<PenaltyContract>();
 
             using (IVREntities ctx = new IVREntities())

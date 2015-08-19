@@ -48,6 +48,34 @@
                 <TextBlock VerticalAlignment="Center" FontSize="14" Text="Выберите интересующий вас раздел:"></TextBlock>
             </StackPanel>-->
 
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                    <TextBlock Text="Год:" Margin="0,0,5,0"></TextBlock>
+                    <xctk:IntegerUpDown Value="{Binding Source={x:Static local:Helper.I}, Path=Year}" Width="60" />
+                    <Button Content="Открыть календарь" x:Name="calendarButton" Click="calendarButton_Click">
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="1 квартал"></MenuItem>
+                                <MenuItem Header="2 квартал"></MenuItem>
+                                <MenuItem Header="3 квартал"></MenuItem>
+                                <MenuItem Header="4 квартал"></MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
             <DataGrid Grid.Row="1" ItemsSource="{Binding Source={StaticResource viewModel}, Path=Groups}" AutoGenerateColumns="False" SelectionMode="Single" 
                       CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" HeadersVisibility="None" SelectionUnit="FullRow">
                 <DataGrid.Columns>
