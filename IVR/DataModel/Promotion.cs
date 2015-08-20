@@ -24,7 +24,7 @@ namespace IVRClient.DataModel
         public static List<Promotion> Convert(PromotionContract[] promotions)
         {
             List<Promotion> result = new List<Promotion>();
-            for (int i = 0; i < promotions.Length - 1; ++i)
+            for (int i = 0; i <= promotions.Length - 1; ++i)
             {
                 result.Add(new Promotion(promotions[i]));
             }
@@ -46,5 +46,15 @@ namespace IVRClient.DataModel
         public int IDPromotionType { get; set; }
 
         public string Description { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Promotion promotion = obj as Promotion;
+
+            if (promotion == null || this.ID != promotion.ID)
+                return false;
+            else
+                return true;
+        }
     }
 }

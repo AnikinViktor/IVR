@@ -159,13 +159,75 @@
 
                         <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить мероприятие" EditButtonTitle="Редактировать выделенную запись" DeleteButtonTitle="Удалить выделенную запись"></uc:Buttons>
                     
-                        <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow"
+                                  ItemsSource="{Binding Source={StaticResource viewModel}, Path=Works}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Мероприятия"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Выводы"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Кем проведена"></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Дата">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Date}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Мероприятия">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=WorkDescription}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Выводы">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Resolution}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Кем проведена">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=IDPersonInitiator}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
+                            <DataGrid.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="1" Text="Дата:"></TextBlock>
+                                        <DatePicker Grid.Column="1" Grid.Row="1" Width="100" HorizontalAlignment="Left" SelectedDate="{Binding Path=Date}"></DatePicker>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="3" Text="Мероприятия:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=WorkDescription}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="5" Text="Выводы:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Path=Resolution}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="7" Text="Кем проведена:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding Path=IDPersonInitiator}"></TextBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGrid.RowDetailsTemplate>
                         </DataGrid>
                     </Grid>
                 </TabItem>
@@ -180,14 +242,88 @@
 
                         <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить поощрение" EditButtonTitle="Редактировать поощрение" DeleteButtonTitle="Удалить поощрение"></uc:Buttons>
 
-                        <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid  Grid.Row="2" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow"
+                                   ItemsSource="{Binding Source={StaticResource viewModel}, Path=Promotions}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Кем поощрен"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Вид поощрения"></DataGridTextColumn>
-                                <DataGridTextColumn Header="За что поощрен"></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Дата">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Date}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Приказ">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Document}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Кем поощрен">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=IDDocumentInitiator}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Вид поощрения">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=IDPromotionType}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="За что поощрен">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Description}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
+                            <DataGrid.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="1" Text="Дата:"></TextBlock>
+                                        <DatePicker Grid.Column="1" Grid.Row="1" Width="100" HorizontalAlignment="Left" SelectedDate="{Binding Path=Date}"></DatePicker>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="3" Text="Приказ:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=Document}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="5" Text="Кем поощрен:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Path=IDDocumentInitiator}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="7" Text="Вид поощрения:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding Path=IDPromotionType}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="9" Text="За что поощрен:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding Path=Description}"></TextBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGrid.RowDetailsTemplate>
                         </DataGrid>
                     </Grid>
                 </TabItem>
@@ -202,14 +338,88 @@
 
                         <uc:Buttons Grid.Row="0" AddButtonTitle="Добавить взыскание" EditButtonTitle="Редактировать взыскание" DeleteButtonTitle="Удалить взыскание"></uc:Buttons>
 
-                        <DataGrid Grid.Row="2"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow">
+                        <DataGrid Grid.Row="2"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" SelectionUnit="FullRow"
+                                  ItemsSource="{Binding Source={StaticResource viewModel}, Path=Penalties}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Дата"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Приказ"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Кем наложено"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Вид взыскания"></DataGridTextColumn>
-                                <DataGridTextColumn Header="За какое нарушение"></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Дата">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Date}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Приказ">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Document}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Кем наложено">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=IDDocumentInitiator}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Вид взыскания">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=IDPromotionType}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="За какое нарушение">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Description}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
+                            <DataGrid.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Style="{StaticResource rowHeight}"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="1" Text="Дата:"></TextBlock>
+                                        <DatePicker Grid.Column="1" Grid.Row="1" Width="100" HorizontalAlignment="Left" SelectedDate="{Binding Path=Date}"></DatePicker>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="3" Text="Приказ:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=Document}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="5" Text="Кем наложено:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Path=IDDocumentInitiator}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="7" Text="Вид взыскания:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding Path=IDPromotionType}"></TextBox>
+
+                                        <TextBlock Style="{StaticResource labelStyle}" Grid.Row="9" Text="За какое нарушение:"></TextBlock>
+                                        <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding Path=Description}"></TextBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGrid.RowDetailsTemplate>
                         </DataGrid>
                     </Grid>
                 </TabItem>

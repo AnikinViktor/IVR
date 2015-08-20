@@ -98,4 +98,30 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PromotionContract" nillable="true" type="tns:PromotionContract" />
+  <xs:complexType name="ArrayOfPromotionTypeContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PromotionTypeContract" nillable="true" type="tns:PromotionTypeContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPromotionTypeContract" nillable="true" type="tns:ArrayOfPromotionTypeContract" />
+  <xs:complexType name="PromotionTypeContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PromotionTypeContract" nillable="true" type="tns:PromotionTypeContract" />
+  <xs:complexType name="ArrayOfPenaltyTypeContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PenaltyTypeContract" nillable="true" type="tns:PenaltyTypeContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPenaltyTypeContract" nillable="true" type="tns:ArrayOfPenaltyTypeContract" />
+  <xs:complexType name="PenaltyTypeContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PenaltyTypeContract" nillable="true" type="tns:PenaltyTypeContract" />
 </xs:schema>

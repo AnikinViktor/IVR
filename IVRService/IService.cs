@@ -24,5 +24,11 @@ namespace IVRService
 
         [OperationContract]
         List<PromotionContract> GetPromotions(int IDPerson, int year);
+
+        [OperationContract]
+        List<PromotionTypeContract> GetPromotionsType();
+
+        [OperationContract]
+        List<PenaltyTypeContract> GetPenaltiesType();
     }
 }

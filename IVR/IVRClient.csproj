@@ -90,6 +90,8 @@
     <Compile Include="Calendar\Week.cs" />
     <Compile Include="Converters\DayToColorConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="DataModel\PenaltyType.cs" />
+    <Compile Include="DataModel\PromotionType.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="DataModel\BaseDataModel.cs" />
     <Compile Include="DataModel\Group.cs" />
@@ -188,7 +190,13 @@
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PenaltyContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PenaltyTypeContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PromotionContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PromotionTypeContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.WorkContract.datasource">

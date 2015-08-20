@@ -24,12 +24,7 @@ namespace IVRClient.ViewModels
             }
         }
 
-        public bool IsSelected
-        {
-            set { LoadData(); }
-        }
-
-        protected override object LoadData()
+        protected override object LoadData(DoWorkEventArgs e)
         {
             return new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroupsWithPersons()));
         }

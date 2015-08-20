@@ -43,7 +43,7 @@ namespace IVRClient.ViewModels
             }
         }
 
-        protected override object LoadData()
+        protected override object LoadData(DoWorkEventArgs e)
         {
             throw new NotImplementedException();
         }

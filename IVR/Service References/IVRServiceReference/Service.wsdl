@@ -31,6 +31,18 @@
   <wsdl:message name="IService_GetPromotions_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPromotionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetPromotionsType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionsType" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPromotionsType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionsTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPenaltiesType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPenaltiesType" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPenaltiesType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPenaltiesTypeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetGroupsWithPersons">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetGroupsWithPersons" message="tns:IService_GetGroupsWithPersons_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="GetPromotions">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPromotions" message="tns:IService_GetPromotions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPromotionsResponse" message="tns:IService_GetPromotions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPromotionsType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPromotionsType" message="tns:IService_GetPromotionsType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPromotionsTypeResponse" message="tns:IService_GetPromotionsType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPenaltiesType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPenaltiesType" message="tns:IService_GetPenaltiesType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPenaltiesTypeResponse" message="tns:IService_GetPenaltiesType_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPromotions">
       <soap:operation soapAction="http://tempuri.org/IService/GetPromotions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPromotionsType">
+      <soap:operation soapAction="http://tempuri.org/IService/GetPromotionsType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPenaltiesType">
+      <soap:operation soapAction="http://tempuri.org/IService/GetPenaltiesType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

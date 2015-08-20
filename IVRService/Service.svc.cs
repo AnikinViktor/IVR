@@ -25,11 +25,25 @@ namespace IVRService
                     GroupContract group = new GroupContract(gr);
                     foreach (Person pr in gr.People.OrderBy(s => s.FIO))
                     {
-
-                        PersonRank rank = pr.PersonRanks.OrderByDescending(s => s.Date).First();
+                        PersonRank rank = pr.PersonRanks.OrderByDescending(s => s.Date).FirstOrDefault();
                         group.Persons.Add(new PersonContract(pr, rank));
                     }
                     result.Add(group);
+                }
+            }
+
+            return result;
+        }
+
+        public List<PenaltyTypeContract> GetPenaltiesType()
+        {
+            List<PenaltyTypeContract> result = new List<PenaltyTypeContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach (PenaltyType penalty in ctx.PenaltyTypes.OrderBy(x => x.Order))
+                {
+                    result.Add(new PenaltyTypeContract(penalty));
                 }
             }
 
@@ -48,6 +62,21 @@ namespace IVRService
                 foreach (Penalty p in ctx.Penalties.Where(x => x.IDPerson == IDPerson).OrderBy(x => x.Date))
                 {
                     result.Add(new PenaltyContract(p));
+                }
+            }
+
+            return result;
+        }
+
+        public List<PromotionTypeContract> GetPromotionsType()
+        {
+            List<PromotionTypeContract> result = new List<PromotionTypeContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach (PromotionType promotion in ctx.PromotionTypes.OrderBy(x => x.Order))
+                {
+                    result.Add(new PromotionTypeContract(promotion));
                 }
             }
 

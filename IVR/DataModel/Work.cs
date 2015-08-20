@@ -23,7 +23,7 @@ namespace IVRClient.DataModel
         public static List<Work> Convert(WorkContract[] works)
         {
             List<Work> result = new List<Work>();
-            for (int i = 0; i < works.Length - 1; ++i)
+            for (int i = 0; i <= works.Length - 1; ++i)
             {
                 result.Add(new Work(works[i]));
             }
@@ -43,5 +43,15 @@ namespace IVRClient.DataModel
         public string Resolution { get; set; }
 
         public int IDPersonInitiator { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Work work = obj as Work;
+
+            if (work == null || this.ID != work.ID)
+                return false;
+            else
+                return true;
+        }
     }
 }

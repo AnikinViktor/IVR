@@ -52,7 +52,7 @@ namespace IVRClient.ViewModels
         public void LoadDataAsync()
         {
             Loading = true;
-            worker.RunWorkerAsync();
+            worker.RunWorkerAsync(PrepareLoadParams());
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace IVRClient.ViewModels
         /// <param name="e"></param>
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = LoadData();
+            e.Result = LoadData(e);
         }
 
         /// <summary>
@@ -90,10 +90,19 @@ namespace IVRClient.ViewModels
         }
 
         /// <summary>
-        /// Абстрактый класс асинхронной загрузки данных.
+        /// Подготавливает параметры загрузки данных
+        /// </summary>
+        /// <returns></returns>
+        virtual protected DoWorkEventArgs PrepareLoadParams()
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Абстрактый метод асинхронной загрузки данных.
         /// </summary>
         /// <returns>Результат загрузки данных</returns>
-        abstract protected object LoadData();
+        abstract protected object LoadData(DoWorkEventArgs e);
 
         /// <summary>
         /// Присваивает результат загрузки данных в модель представления

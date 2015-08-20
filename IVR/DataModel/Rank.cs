@@ -11,5 +11,15 @@ namespace IVRClient.DataModel
         public int ID { get; set; }
 
         public string Name { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Rank rank = obj as Rank;
+
+            if (rank == null || this.ID != rank.ID)
+                return false;
+            else
+                return true;
+        }
     }
 }
