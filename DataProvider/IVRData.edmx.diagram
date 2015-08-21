@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b0f387d4ec834b7e84a947b0fb84f439" Name="Diagram1">
-        <EntityTypeShape EntityType="IVRModel.Department" Width="1.5" PointX="1.5" PointY="16.75" />
-        <EntityTypeShape EntityType="IVRModel.Group" Width="1.5" PointX="1.5" PointY="1.75" />
-        <EntityTypeShape EntityType="IVRModel.Organization" Width="1.5" PointX="1.5" PointY="25.375" />
-        <EntityTypeShape EntityType="IVRModel.Penalty" Width="1.5" PointX="6" PointY="8" />
-        <EntityTypeShape EntityType="IVRModel.PenaltyType" Width="1.5" PointX="3.75" PointY="2.875" />
-        <EntityTypeShape EntityType="IVRModel.Person" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="IVRModel.PersonPosition" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="IVRModel.PersonRank" Width="1.5" PointX="3" PointY="5.75" />
-        <EntityTypeShape EntityType="IVRModel.Position" Width="1.5" PointX="0.75" PointY="19.875" />
-        <EntityTypeShape EntityType="IVRModel.Promotion" Width="1.5" PointX="3" PointY="12.125" />
-        <EntityTypeShape EntityType="IVRModel.PromotionType" Width="1.5" PointX="0.75" PointY="29.875" />
-        <EntityTypeShape EntityType="IVRModel.Rank" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="IVRModel.Department" Width="1.5" PointX="1.5" PointY="17" />
+        <EntityTypeShape EntityType="IVRModel.Group" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="IVRModel.Organization" Width="1.5" PointX="1.5" PointY="25.5" />
+        <EntityTypeShape EntityType="IVRModel.Penalty" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="IVRModel.PenaltyType" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="IVRModel.Person" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="IVRModel.PersonPosition" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="IVRModel.PersonRank" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="IVRModel.Position" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="IVRModel.Promotion" Width="1.5" PointX="6" PointY="8.125" />
+        <EntityTypeShape EntityType="IVRModel.PromotionType" Width="1.5" PointX="3.75" PointY="1.875" />
+        <EntityTypeShape EntityType="IVRModel.Rank" Width="1.5" PointX="0.75" PointY="19.875" />
         <EntityTypeShape EntityType="IVRModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="IVRModel.Work" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="IVRModel.Work" Width="1.5" PointX="3" PointY="22.125" />
         <AssociationConnector Association="IVRModel.FK_Department_Organization" />
         <AssociationConnector Association="IVRModel.FK_Group_Department" />
         <AssociationConnector Association="IVRModel.FK_Organization_Organization" />
@@ -30,7 +30,6 @@
         <AssociationConnector Association="IVRModel.FK_PersonRank_Person" />
         <AssociationConnector Association="IVRModel.FK_Promotion_Person" />
         <AssociationConnector Association="IVRModel.FK_Work_Person" />
-        <AssociationConnector Association="IVRModel.FK_Work_PersonInitiator" />
         <AssociationConnector Association="IVRModel.FK_PersonPosition_Position" />
         <AssociationConnector Association="IVRModel.FK_PersonRank_Rank" />
         <AssociationConnector Association="IVRModel.FK_Promotion_PromotionType" />

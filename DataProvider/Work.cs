@@ -20,9 +20,8 @@ namespace DataProvider
         public int IDPerson { get; set; }
         public string WorkDescription { get; set; }
         public string Resolution { get; set; }
-        public int IDPersonInitiator { get; set; }
+        public string PersonInitiator { get; set; }
     
         public virtual Person Person { get; set; }
-        public virtual Person Person1 { get; set; }
     }
 }

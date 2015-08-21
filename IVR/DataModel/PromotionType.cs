@@ -28,15 +28,5 @@ namespace IVRClient.DataModel
             }
             return result;
         }
-
-        public override bool Equals(object obj)
-        {
-            PromotionType promotion = obj as PromotionType;
-
-            if (promotion == null || this.ID != promotion.ID)
-                return false;
-            else
-                return true;
-        }
     }
 }

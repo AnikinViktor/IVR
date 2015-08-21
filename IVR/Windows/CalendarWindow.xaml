@@ -13,7 +13,6 @@
     <Window.Resources>
         <vm:CalendarViewModel x:Key="viewModel"></vm:CalendarViewModel>
         <conv:NullToVisibilityConverter x:Key="nullToVisibilityConverter"></conv:NullToVisibilityConverter>
-        <conv:DayToColorConverter x:Key="dayToColorConverter"></conv:DayToColorConverter>
     </Window.Resources>
     <xctk:BusyIndicator Style="{StaticResource busyIndicatorContent}" IsBusy="{Binding Source={StaticResource viewModel}, Path=Loading}">
         <Grid>

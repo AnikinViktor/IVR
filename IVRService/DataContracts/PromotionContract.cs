@@ -15,7 +15,7 @@ namespace IVRService.DataContracts
             this.ID = promotion.ID;
             this.Date = promotion.Date;
             this.InputDateTime = promotion.InputDateTime;
-            this.IDPerson = promotion.IDPerson;
+            //this.IDPerson = promotion.IDPerson;
             this.Document = promotion.Document;
             this.IDDocumentInitiator = promotion.IDDocumentInitiator;
             this.IDPromotionType = promotion.IDPromotionType;
@@ -31,8 +31,8 @@ namespace IVRService.DataContracts
         [DataMember]
         public DateTime InputDateTime { get; set; }
 
-        [DataMember]
-        public int IDPerson { get; set; }
+        //[DataMember]
+        //public int IDPerson { get; set; }
 
         [DataMember]
         public string Document { get; set; }

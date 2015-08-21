@@ -48,15 +48,5 @@ namespace IVRClient.DataModel
         public int StopYear { get; set; }
 
         public ObservableCollection<Person> Persons { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            Group group = obj as Group;
-
-            if (group == null || this.ID != group.ID)
-                return false;
-            else
-                return true;
-        }
     }
 }

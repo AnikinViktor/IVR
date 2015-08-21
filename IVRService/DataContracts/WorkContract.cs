@@ -15,10 +15,10 @@ namespace IVRService.DataContracts
             this.ID = work.ID;
             this.Date = work.Date;
             this.InputDateTime = work.InputDateTime;
-            this.IDPerson = work.IDPerson;
+            //this.IDPerson = work.IDPerson;
             this.WorkDescription = work.WorkDescription;
             this.Resolution = work.Resolution;
-            this.IDPersonInitiator = work.IDPersonInitiator;
+            this.PersonInitiator = work.PersonInitiator;
         }
 
         [DataMember]
@@ -30,8 +30,8 @@ namespace IVRService.DataContracts
         [DataMember]
         public DateTime InputDateTime { get; set; }
 
-        [DataMember]
-        public int IDPerson { get; set; }
+        //[DataMember]
+        //public int IDPerson { get; set; }
 
         [DataMember]
         public string WorkDescription { get; set; }
@@ -40,6 +40,6 @@ namespace IVRService.DataContracts
         public string Resolution { get; set; }
 
         [DataMember]
-        public int IDPersonInitiator { get; set; }
+        public string PersonInitiator { get; set; }
     }
 }

@@ -29,6 +29,7 @@
           <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="IDParent" Type="int" />
           <Property Name="OGRN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Penalty">
           <Key>
@@ -92,9 +93,9 @@
         </EntityType>
         <EntityType Name="PersonRank">
           <Key>
-            <PropertyRef Name="IDPerson" />
-            <PropertyRef Name="IDRank" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDPerson" Type="int" Nullable="false" />
           <Property Name="IDRank" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
@@ -155,7 +156,7 @@
           <Property Name="IDPerson" Type="int" Nullable="false" />
           <Property Name="WorkDescription" Type="varchar(max)" Nullable="false" />
           <Property Name="Resolution" Type="varchar(max)" />
-          <Property Name="IDPersonInitiator" Type="int" Nullable="false" />
+          <Property Name="PersonInitiator" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <Association Name="FK_Department_Organization">
           <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
@@ -349,18 +350,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Work_PersonInitiator">
-          <End Role="Person" Type="Self.Person" Multiplicity="1" />
-          <End Role="Work" Type="Self.Work" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Work">
-              <PropertyRef Name="IDPersonInitiator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище IVRModelContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
@@ -441,10 +430,6 @@
             <End Role="Person" EntitySet="Person" />
             <End Role="Work" EntitySet="Work" />
           </AssociationSet>
-          <AssociationSet Name="FK_Work_PersonInitiator" Association="Self.FK_Work_PersonInitiator">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="Work" EntitySet="Work" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -509,10 +494,6 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Work" EntitySet="Works" />
           </AssociationSet>
-          <AssociationSet Name="FK_Work_PersonInitiator" Association="IVRModel.FK_Work_PersonInitiator">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Work" EntitySet="Works" />
-          </AssociationSet>
           <AssociationSet Name="FK_PersonPosition_Position" Association="IVRModel.FK_PersonPosition_Position">
             <End Role="Position" EntitySet="Positions" />
             <End Role="PersonPosition" EntitySet="PersonPositions" />
@@ -558,6 +539,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="IDParent" Type="Int32" />
           <Property Name="OGRN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Departments" Relationship="IVRModel.FK_Department_Organization" FromRole="Organization" ToRole="Department" />
           <NavigationProperty Name="Organization1" Relationship="IVRModel.FK_Organization_Organization" FromRole="Organization" ToRole="Organization1" />
           <NavigationProperty Name="Organization2" Relationship="IVRModel.FK_Organization_Organization" FromRole="Organization1" ToRole="Organization" />
@@ -615,7 +597,6 @@
           <NavigationProperty Name="PersonRanks" Relationship="IVRModel.FK_PersonRank_Person" FromRole="Person" ToRole="PersonRank" />
           <NavigationProperty Name="Promotions" Relationship="IVRModel.FK_Promotion_Person" FromRole="Person" ToRole="Promotion" />
           <NavigationProperty Name="Works" Relationship="IVRModel.FK_Work_Person" FromRole="Person" ToRole="Work" />
-          <NavigationProperty Name="Works1" Relationship="IVRModel.FK_Work_PersonInitiator" FromRole="Person" ToRole="Work" />
           <NavigationProperty Name="Groups" Relationship="IVRModel.PersonGroup" FromRole="Person" ToRole="Group" />
         </EntityType>
         <EntityType Name="PersonPosition">
@@ -631,9 +612,9 @@
         </EntityType>
         <EntityType Name="PersonRank">
           <Key>
-            <PropertyRef Name="IDPerson" />
-            <PropertyRef Name="IDRank" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDPerson" Type="Int32" Nullable="false" />
           <Property Name="IDRank" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
@@ -702,9 +683,8 @@
           <Property Name="IDPerson" Type="Int32" Nullable="false" />
           <Property Name="WorkDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Resolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IDPersonInitiator" Type="Int32" Nullable="false" />
+          <Property Name="PersonInitiator" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Person" Relationship="IVRModel.FK_Work_Person" FromRole="Work" ToRole="Person" />
-          <NavigationProperty Name="Person1" Relationship="IVRModel.FK_Work_PersonInitiator" FromRole="Work" ToRole="Person" />
         </EntityType>
         <Association Name="FK_Department_Organization">
           <End Type="IVRModel.Organization" Role="Organization" Multiplicity="1" />
@@ -838,18 +818,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Work_PersonInitiator">
-          <End Type="IVRModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="IVRModel.Work" Role="Work" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Work">
-              <PropertyRef Name="IDPersonInitiator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PersonPosition_Position">
           <End Type="IVRModel.Position" Role="Position" Multiplicity="1" />
           <End Type="IVRModel.PersonPosition" Role="PersonPosition" Multiplicity="*" />
@@ -917,6 +885,7 @@
           <EntitySetMapping Name="Organizations">
             <EntityTypeMapping TypeName="IVRModel.Organization">
               <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="OGRN" ColumnName="OGRN" />
                 <ScalarProperty Name="IDParent" ColumnName="IDParent" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -985,6 +954,7 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="IDRank" ColumnName="IDRank" />
                 <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1042,7 +1012,7 @@
           <EntitySetMapping Name="Works">
             <EntityTypeMapping TypeName="IVRModel.Work">
               <MappingFragment StoreEntitySet="Work">
-                <ScalarProperty Name="IDPersonInitiator" ColumnName="IDPersonInitiator" />
+                <ScalarProperty Name="PersonInitiator" ColumnName="PersonInitiator" />
                 <ScalarProperty Name="Resolution" ColumnName="Resolution" />
                 <ScalarProperty Name="WorkDescription" ColumnName="WorkDescription" />
                 <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />

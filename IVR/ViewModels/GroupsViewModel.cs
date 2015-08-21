@@ -26,7 +26,7 @@ namespace IVRClient.ViewModels
 
         protected override object LoadData(DoWorkEventArgs e)
         {
-            return new ObservableCollection<Group>(Group.Convert(Helper.I.Srv.GetGroupsWithPersons()));
+            return new ObservableCollection<Group>(Group.Convert(AppState.I.Srv.GetGroupsWithPersons(AppState.I.IDDepartment)));
         }
 
         protected override void SetLoadingResult(RunWorkerCompletedEventArgs e)

@@ -14,10 +14,10 @@ namespace IVRClient.DataModel
             this.ID = work.ID;
             this.Date = work.Date;
             this.InputDateTime = work.InputDateTime;
-            this.IDPerson = work.IDPerson;
+            //this.IDPerson = work.IDPerson;
             this.WorkDescription = work.WorkDescription;
             this.Resolution = work.Resolution;
-            this.IDPersonInitiator = work.IDPersonInitiator;
+            this.PersonInitiator = work.PersonInitiator;
         }
 
         public static List<Work> Convert(WorkContract[] works)
@@ -36,22 +36,10 @@ namespace IVRClient.DataModel
 
         public DateTime InputDateTime { get; set; }
 
-        public int IDPerson { get; set; }
-
         public string WorkDescription { get; set; }
 
         public string Resolution { get; set; }
 
-        public int IDPersonInitiator { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            Work work = obj as Work;
-
-            if (work == null || this.ID != work.ID)
-                return false;
-            else
-                return true;
-        }
+        public string PersonInitiator { get; set; }
     }
 }

@@ -88,11 +88,16 @@
     </ApplicationDefinition>
     <Compile Include="Calendar\Day.cs" />
     <Compile Include="Calendar\Week.cs" />
-    <Compile Include="Converters\DayToColorConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\OrganizationIDToNameConverter.cs" />
+    <Compile Include="Converters\PenaltyIDtoNameConverter.cs" />
+    <Compile Include="Converters\PromotionIDtoNameConverter.cs" />
+    <Compile Include="Converters\RankIDtoNameConverter.cs" />
+    <Compile Include="DataModel\Organization.cs" />
     <Compile Include="DataModel\PenaltyType.cs" />
+    <Compile Include="DataModel\PersonRank.cs" />
     <Compile Include="DataModel\PromotionType.cs" />
-    <Compile Include="Helper.cs" />
+    <Compile Include="AppState.cs" />
     <Compile Include="DataModel\BaseDataModel.cs" />
     <Compile Include="DataModel\Group.cs" />
     <Compile Include="DataModel\Penalty.cs" />
@@ -104,6 +109,10 @@
       <DependentUpon>Info.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CalendarViewModel.cs" />
+    <Compile Include="ViewModels\CommonViewModel.cs" />
+    <Compile Include="LoadResults\CommonViewModelResult.cs" />
+    <Compile Include="ViewModels\LoadParams.cs" />
+    <Compile Include="LoadResults\PersonInfoViewModelResult.cs" />
     <Compile Include="Windows\BaseEditWindow.xaml.cs">
       <DependentUpon>BaseEditWindow.xaml</DependentUpon>
     </Compile>
@@ -187,16 +196,25 @@
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.GroupContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.OrganizationContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PenaltyContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PenaltyTypeContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PersonRankContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PromotionContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.PromotionTypeContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.RankContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\IVRServiceReference\IVRClient.IVRServiceReference.WorkContract.datasource">

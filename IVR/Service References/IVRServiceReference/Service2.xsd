@@ -51,9 +51,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
-      <xs:element minOccurs="0" name="IDPersonInitiator" type="xs:int" />
       <xs:element minOccurs="0" name="InputDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PersonInitiator" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Resolution" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="WorkDescription" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -74,7 +73,6 @@
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="IDDocumentInitiator" type="xs:int" />
       <xs:element minOccurs="0" name="IDPenaltyType" type="xs:int" />
-      <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
       <xs:element minOccurs="0" name="InputDateTime" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
@@ -92,7 +90,6 @@
       <xs:element minOccurs="0" name="Document" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="IDDocumentInitiator" type="xs:int" />
-      <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
       <xs:element minOccurs="0" name="IDPromotionType" type="xs:int" />
       <xs:element minOccurs="0" name="InputDateTime" type="xs:dateTime" />
     </xs:sequence>
@@ -124,4 +121,44 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PenaltyTypeContract" nillable="true" type="tns:PenaltyTypeContract" />
+  <xs:complexType name="ArrayOfPersonRankContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonRankContract" nillable="true" type="tns:PersonRankContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonRankContract" nillable="true" type="tns:ArrayOfPersonRankContract" />
+  <xs:complexType name="PersonRankContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IDRank" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonRankContract" nillable="true" type="tns:PersonRankContract" />
+  <xs:complexType name="ArrayOfRankContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RankContract" nillable="true" type="tns:RankContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRankContract" nillable="true" type="tns:ArrayOfRankContract" />
+  <xs:complexType name="RankContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RankContract" nillable="true" type="tns:RankContract" />
+  <xs:complexType name="ArrayOfOrganizationContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrganizationContract" nillable="true" type="tns:OrganizationContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrganizationContract" nillable="true" type="tns:ArrayOfOrganizationContract" />
+  <xs:complexType name="OrganizationContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrganizationContract" nillable="true" type="tns:OrganizationContract" />
 </xs:schema>

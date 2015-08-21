@@ -28,15 +28,5 @@ namespace IVRClient.DataModel
         public int ID { get; set; }
 
         public string Name { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            PenaltyType penalty = obj as PenaltyType;
-
-            if (penalty == null || this.ID != penalty.ID)
-                return false;
-            else
-                return true;
-        }
     }
 }

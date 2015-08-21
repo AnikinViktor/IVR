@@ -31,17 +31,35 @@
   <wsdl:message name="IService_GetPromotions_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPromotionsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetPromotionsType_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPromotionsType" />
+  <wsdl:message name="IService_GetPromotionTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionTypes" />
   </wsdl:message>
-  <wsdl:message name="IService_GetPromotionsType_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPromotionsTypeResponse" />
+  <wsdl:message name="IService_GetPromotionTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionTypesResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetPenaltiesType_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPenaltiesType" />
+  <wsdl:message name="IService_GetPenaltyTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPenaltyTypes" />
   </wsdl:message>
-  <wsdl:message name="IService_GetPenaltiesType_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPenaltiesTypeResponse" />
+  <wsdl:message name="IService_GetPenaltyTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPenaltyTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPersonRanks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonRanks" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPersonRanks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonRanksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRanks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRanks" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRanks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRanksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOrganizationInitiators_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationInitiators" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOrganizationInitiators_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationInitiatorsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetGroupsWithPersons">
@@ -60,13 +78,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPromotions" message="tns:IService_GetPromotions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPromotionsResponse" message="tns:IService_GetPromotions_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPromotionsType">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPromotionsType" message="tns:IService_GetPromotionsType_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPromotionsTypeResponse" message="tns:IService_GetPromotionsType_OutputMessage" />
+    <wsdl:operation name="GetPromotionTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPromotionTypes" message="tns:IService_GetPromotionTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPromotionTypesResponse" message="tns:IService_GetPromotionTypes_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPenaltiesType">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPenaltiesType" message="tns:IService_GetPenaltiesType_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPenaltiesTypeResponse" message="tns:IService_GetPenaltiesType_OutputMessage" />
+    <wsdl:operation name="GetPenaltyTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPenaltyTypes" message="tns:IService_GetPenaltyTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPenaltyTypesResponse" message="tns:IService_GetPenaltyTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonRanks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPersonRanks" message="tns:IService_GetPersonRanks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPersonRanksResponse" message="tns:IService_GetPersonRanks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRanks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRanks" message="tns:IService_GetRanks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRanksResponse" message="tns:IService_GetRanks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationInitiators">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetOrganizationInitiators" message="tns:IService_GetOrganizationInitiators_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetOrganizationInitiatorsResponse" message="tns:IService_GetOrganizationInitiators_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -107,8 +137,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPromotionsType">
-      <soap:operation soapAction="http://tempuri.org/IService/GetPromotionsType" style="document" />
+    <wsdl:operation name="GetPromotionTypes">
+      <soap:operation soapAction="http://tempuri.org/IService/GetPromotionTypes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -116,8 +146,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPenaltiesType">
-      <soap:operation soapAction="http://tempuri.org/IService/GetPenaltiesType" style="document" />
+    <wsdl:operation name="GetPenaltyTypes">
+      <soap:operation soapAction="http://tempuri.org/IService/GetPenaltyTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonRanks">
+      <soap:operation soapAction="http://tempuri.org/IService/GetPersonRanks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRanks">
+      <soap:operation soapAction="http://tempuri.org/IService/GetRanks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationInitiators">
+      <soap:operation soapAction="http://tempuri.org/IService/GetOrganizationInitiators" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

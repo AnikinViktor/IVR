@@ -27,6 +27,7 @@ namespace DataProvider
         public string Name { get; set; }
         public Nullable<int> IDParent { get; set; }
         public string OGRN { get; set; }
+        public int Level { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Department> Departments { get; set; }

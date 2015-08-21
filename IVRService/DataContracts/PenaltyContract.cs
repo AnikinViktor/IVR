@@ -20,7 +20,7 @@ namespace IVRService.DataContracts
             this.IDPenaltyType = penalty.IDPenaltyType;
             this.Description = penalty.Description;
             this.DocumentDestroy = penalty.DocumentDestroy;
-            this.IDPerson = penalty.IDPerson;
+            //this.IDPerson = penalty.IDPerson;
         }
 
         [DataMember]
@@ -47,7 +47,7 @@ namespace IVRService.DataContracts
         [DataMember]
         public string DocumentDestroy { get; set; }
 
-        [DataMember]
-        public int IDPerson { get; set; }
+        //[DataMember]
+        //public int IDPerson { get; set; }
     }
 }

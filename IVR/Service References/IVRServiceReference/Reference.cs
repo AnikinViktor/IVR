@@ -391,13 +391,10 @@ namespace IVRClient.IVRServiceReference {
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDPersonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDPersonInitiatorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime InputDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PersonInitiatorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ResolutionField;
@@ -442,32 +439,6 @@ namespace IVRClient.IVRServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IDPerson {
-            get {
-                return this.IDPersonField;
-            }
-            set {
-                if ((this.IDPersonField.Equals(value) != true)) {
-                    this.IDPersonField = value;
-                    this.RaisePropertyChanged("IDPerson");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IDPersonInitiator {
-            get {
-                return this.IDPersonInitiatorField;
-            }
-            set {
-                if ((this.IDPersonInitiatorField.Equals(value) != true)) {
-                    this.IDPersonInitiatorField = value;
-                    this.RaisePropertyChanged("IDPersonInitiator");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime InputDateTime {
             get {
                 return this.InputDateTimeField;
@@ -476,6 +447,19 @@ namespace IVRClient.IVRServiceReference {
                 if ((this.InputDateTimeField.Equals(value) != true)) {
                     this.InputDateTimeField = value;
                     this.RaisePropertyChanged("InputDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PersonInitiator {
+            get {
+                return this.PersonInitiatorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PersonInitiatorField, value) != true)) {
+                    this.PersonInitiatorField = value;
+                    this.RaisePropertyChanged("PersonInitiator");
                 }
             }
         }
@@ -545,9 +529,6 @@ namespace IVRClient.IVRServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDPenaltyTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDPersonField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime InputDateTimeField;
@@ -654,19 +635,6 @@ namespace IVRClient.IVRServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IDPerson {
-            get {
-                return this.IDPersonField;
-            }
-            set {
-                if ((this.IDPersonField.Equals(value) != true)) {
-                    this.IDPersonField = value;
-                    this.RaisePropertyChanged("IDPerson");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime InputDateTime {
             get {
                 return this.InputDateTimeField;
@@ -712,9 +680,6 @@ namespace IVRClient.IVRServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDDocumentInitiatorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDPersonField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDPromotionTypeField;
@@ -793,19 +758,6 @@ namespace IVRClient.IVRServiceReference {
                 if ((this.IDDocumentInitiatorField.Equals(value) != true)) {
                     this.IDDocumentInitiatorField = value;
                     this.RaisePropertyChanged("IDDocumentInitiator");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IDPerson {
-            get {
-                return this.IDPersonField;
-            }
-            set {
-                if ((this.IDPersonField.Equals(value) != true)) {
-                    this.IDPersonField = value;
-                    this.RaisePropertyChanged("IDPerson");
                 }
             }
         }
@@ -968,15 +920,214 @@ namespace IVRClient.IVRServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PersonRankContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class PersonRankContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDRankField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDRank {
+            get {
+                return this.IDRankField;
+            }
+            set {
+                if ((this.IDRankField.Equals(value) != true)) {
+                    this.IDRankField = value;
+                    this.RaisePropertyChanged("IDRank");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RankContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class RankContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrganizationContract", Namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class OrganizationContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IVRServiceReference.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroupsWithPersons", ReplyAction="http://tempuri.org/IService/GetGroupsWithPersonsResponse")]
-        IVRClient.IVRServiceReference.GroupContract[] GetGroupsWithPersons();
+        IVRClient.IVRServiceReference.GroupContract[] GetGroupsWithPersons(int IDDepartment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGroupsWithPersons", ReplyAction="http://tempuri.org/IService/GetGroupsWithPersonsResponse")]
-        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync();
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync(int IDDepartment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetWorks", ReplyAction="http://tempuri.org/IService/GetWorksResponse")]
         IVRClient.IVRServiceReference.WorkContract[] GetWorks(int IDPerson, int year);
@@ -996,17 +1147,35 @@ namespace IVRClient.IVRServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotions", ReplyAction="http://tempuri.org/IService/GetPromotionsResponse")]
         System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionContract[]> GetPromotionsAsync(int IDPerson, int year);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotionsType", ReplyAction="http://tempuri.org/IService/GetPromotionsTypeResponse")]
-        IVRClient.IVRServiceReference.PromotionTypeContract[] GetPromotionsType();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotionTypes", ReplyAction="http://tempuri.org/IService/GetPromotionTypesResponse")]
+        IVRClient.IVRServiceReference.PromotionTypeContract[] GetPromotionTypes();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotionsType", ReplyAction="http://tempuri.org/IService/GetPromotionsTypeResponse")]
-        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionTypeContract[]> GetPromotionsTypeAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPromotionTypes", ReplyAction="http://tempuri.org/IService/GetPromotionTypesResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionTypeContract[]> GetPromotionTypesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPenaltiesType", ReplyAction="http://tempuri.org/IService/GetPenaltiesTypeResponse")]
-        IVRClient.IVRServiceReference.PenaltyTypeContract[] GetPenaltiesType();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPenaltyTypes", ReplyAction="http://tempuri.org/IService/GetPenaltyTypesResponse")]
+        IVRClient.IVRServiceReference.PenaltyTypeContract[] GetPenaltyTypes();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPenaltiesType", ReplyAction="http://tempuri.org/IService/GetPenaltiesTypeResponse")]
-        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PenaltyTypeContract[]> GetPenaltiesTypeAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPenaltyTypes", ReplyAction="http://tempuri.org/IService/GetPenaltyTypesResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PenaltyTypeContract[]> GetPenaltyTypesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPersonRanks", ReplyAction="http://tempuri.org/IService/GetPersonRanksResponse")]
+        IVRClient.IVRServiceReference.PersonRankContract[] GetPersonRanks(int IDPerson);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPersonRanks", ReplyAction="http://tempuri.org/IService/GetPersonRanksResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PersonRankContract[]> GetPersonRanksAsync(int IDPerson);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRanks", ReplyAction="http://tempuri.org/IService/GetRanksResponse")]
+        IVRClient.IVRServiceReference.RankContract[] GetRanks();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRanks", ReplyAction="http://tempuri.org/IService/GetRanksResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.RankContract[]> GetRanksAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetOrganizationInitiators", ReplyAction="http://tempuri.org/IService/GetOrganizationInitiatorsResponse")]
+        IVRClient.IVRServiceReference.OrganizationContract[] GetOrganizationInitiators(int IDOrganization);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetOrganizationInitiators", ReplyAction="http://tempuri.org/IService/GetOrganizationInitiatorsResponse")]
+        System.Threading.Tasks.Task<IVRClient.IVRServiceReference.OrganizationContract[]> GetOrganizationInitiatorsAsync(int IDOrganization);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1036,12 +1205,12 @@ namespace IVRClient.IVRServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public IVRClient.IVRServiceReference.GroupContract[] GetGroupsWithPersons() {
-            return base.Channel.GetGroupsWithPersons();
+        public IVRClient.IVRServiceReference.GroupContract[] GetGroupsWithPersons(int IDDepartment) {
+            return base.Channel.GetGroupsWithPersons(IDDepartment);
         }
         
-        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync() {
-            return base.Channel.GetGroupsWithPersonsAsync();
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.GroupContract[]> GetGroupsWithPersonsAsync(int IDDepartment) {
+            return base.Channel.GetGroupsWithPersonsAsync(IDDepartment);
         }
         
         public IVRClient.IVRServiceReference.WorkContract[] GetWorks(int IDPerson, int year) {
@@ -1068,20 +1237,44 @@ namespace IVRClient.IVRServiceReference {
             return base.Channel.GetPromotionsAsync(IDPerson, year);
         }
         
-        public IVRClient.IVRServiceReference.PromotionTypeContract[] GetPromotionsType() {
-            return base.Channel.GetPromotionsType();
+        public IVRClient.IVRServiceReference.PromotionTypeContract[] GetPromotionTypes() {
+            return base.Channel.GetPromotionTypes();
         }
         
-        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionTypeContract[]> GetPromotionsTypeAsync() {
-            return base.Channel.GetPromotionsTypeAsync();
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PromotionTypeContract[]> GetPromotionTypesAsync() {
+            return base.Channel.GetPromotionTypesAsync();
         }
         
-        public IVRClient.IVRServiceReference.PenaltyTypeContract[] GetPenaltiesType() {
-            return base.Channel.GetPenaltiesType();
+        public IVRClient.IVRServiceReference.PenaltyTypeContract[] GetPenaltyTypes() {
+            return base.Channel.GetPenaltyTypes();
         }
         
-        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PenaltyTypeContract[]> GetPenaltiesTypeAsync() {
-            return base.Channel.GetPenaltiesTypeAsync();
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PenaltyTypeContract[]> GetPenaltyTypesAsync() {
+            return base.Channel.GetPenaltyTypesAsync();
+        }
+        
+        public IVRClient.IVRServiceReference.PersonRankContract[] GetPersonRanks(int IDPerson) {
+            return base.Channel.GetPersonRanks(IDPerson);
+        }
+        
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.PersonRankContract[]> GetPersonRanksAsync(int IDPerson) {
+            return base.Channel.GetPersonRanksAsync(IDPerson);
+        }
+        
+        public IVRClient.IVRServiceReference.RankContract[] GetRanks() {
+            return base.Channel.GetRanks();
+        }
+        
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.RankContract[]> GetRanksAsync() {
+            return base.Channel.GetRanksAsync();
+        }
+        
+        public IVRClient.IVRServiceReference.OrganizationContract[] GetOrganizationInitiators(int IDOrganization) {
+            return base.Channel.GetOrganizationInitiators(IDOrganization);
+        }
+        
+        public System.Threading.Tasks.Task<IVRClient.IVRServiceReference.OrganizationContract[]> GetOrganizationInitiatorsAsync(int IDOrganization) {
+            return base.Channel.GetOrganizationInitiatorsAsync(IDOrganization);
         }
     }
 }

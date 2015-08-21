@@ -1,4 +1,5 @@
-﻿using IVRClient.Calendar;
+﻿using IVRClient.DataModel;
+using IVRClient.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,24 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace IVRClient.Converters
 {
     /// <summary>
-    /// Конвертирует день недели (суббота и воскресенье) в красный цвет. Остальные дни черные.
+    /// Конвертирует ID в название организации, ориентируясь по общей модели представления
     /// </summary>
-    class DayToColorConverter : IValueConverter
+    class OrganizationIDToNameConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Day day = (Day)value;
-            if (day == null || (day.GetDay.DayOfWeek != DayOfWeek.Saturday && day.GetDay.DayOfWeek != DayOfWeek.Sunday))
-                return Brushes.Black;
+            Organization organization = CommonViewModel.I.Organizations.SingleOrDefault(x => x.ID == (int)value);
+            if (organization == null)
+                return string.Empty;
             else
-
-
-                return Brushes.Red;
+                return organization.Name;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

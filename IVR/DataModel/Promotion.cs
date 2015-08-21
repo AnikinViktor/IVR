@@ -14,7 +14,6 @@ namespace IVRClient.DataModel
             this.ID = promotion.ID;
             this.Date = promotion.Date;
             this.InputDateTime = promotion.InputDateTime;
-            this.IDPerson = promotion.IDPerson;
             this.Document = promotion.Document;
             this.IDDocumentInitiator = promotion.IDDocumentInitiator;
             this.IDPromotionType = promotion.IDPromotionType;
@@ -37,8 +36,6 @@ namespace IVRClient.DataModel
 
         public DateTime InputDateTime { get; set; }
 
-        public int IDPerson { get; set; }
-
         public string Document { get; set; }
 
         public int IDDocumentInitiator { get; set; }
@@ -46,15 +43,5 @@ namespace IVRClient.DataModel
         public int IDPromotionType { get; set; }
 
         public string Description { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            Promotion promotion = obj as Promotion;
-
-            if (promotion == null || this.ID != promotion.ID)
-                return false;
-            else
-                return true;
-        }
     }
 }

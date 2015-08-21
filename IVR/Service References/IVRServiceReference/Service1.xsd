@@ -3,7 +3,9 @@
   <xs:import schemaLocation="http://localhost:50262/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" />
   <xs:element name="GetGroupsWithPersons">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDDepartment" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetGroupsWithPersonsResponse">
@@ -58,27 +60,67 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPromotionsType">
+  <xs:element name="GetPromotionTypes">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPromotionsTypeResponse">
+  <xs:element name="GetPromotionTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPromotionsTypeResult" nillable="true" type="q5:ArrayOfPromotionTypeContract" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPromotionTypesResult" nillable="true" type="q5:ArrayOfPromotionTypeContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPenaltiesType">
+  <xs:element name="GetPenaltyTypes">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPenaltiesTypeResponse">
+  <xs:element name="GetPenaltyTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPenaltiesTypeResult" nillable="true" type="q6:ArrayOfPenaltyTypeContract" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPenaltyTypesResult" nillable="true" type="q6:ArrayOfPenaltyTypeContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonRanks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDPerson" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonRanksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetPersonRanksResult" nillable="true" type="q7:ArrayOfPersonRankContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRanks">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRanksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetRanksResult" nillable="true" type="q8:ArrayOfRankContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationInitiators">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDOrganization" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationInitiatorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/IVRService.DataContracts" minOccurs="0" name="GetOrganizationInitiatorsResult" nillable="true" type="q9:ArrayOfOrganizationContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

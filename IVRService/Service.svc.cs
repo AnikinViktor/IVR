@@ -14,13 +14,13 @@ namespace IVRService
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Service.svc или Service.svc.cs в обозревателе решений и начните отладку.
     public class Service : IService
     {
-        public List<GroupContract> GetGroupsWithPersons()
+        public List<GroupContract> GetGroupsWithPersons(int IDDepartment)
         {
             List<GroupContract> result = new List<GroupContract>();
 
             using (IVREntities ctx = new IVREntities())
             {
-                foreach(Group gr in ctx.Groups.OrderBy(s => s.Name))
+                foreach(Group gr in ctx.Groups.Where(x => x.IDDepartment == IDDepartment).OrderBy(s => s.Name))
                 {
                     GroupContract group = new GroupContract(gr);
                     foreach (Person pr in gr.People.OrderBy(s => s.FIO))
@@ -35,7 +35,7 @@ namespace IVRService
             return result;
         }
 
-        public List<PenaltyTypeContract> GetPenaltiesType()
+        public List<PenaltyTypeContract> GetPenaltyTypes()
         {
             List<PenaltyTypeContract> result = new List<PenaltyTypeContract>();
 
@@ -68,7 +68,7 @@ namespace IVRService
             return result;
         }
 
-        public List<PromotionTypeContract> GetPromotionsType()
+        public List<PromotionTypeContract> GetPromotionTypes()
         {
             List<PromotionTypeContract> result = new List<PromotionTypeContract>();
 
@@ -107,6 +107,52 @@ namespace IVRService
                 foreach (Work w in ctx.Works.Where(x => x.IDPerson == IDPerson).OrderBy(x => x.Date))
                 {
                     result.Add(new WorkContract(w));
+                }
+            }
+
+            return result;
+        }
+
+        public List<PersonRankContract> GetPersonRanks(int IDPerson)
+        {
+            List<PersonRankContract> result = new List<PersonRankContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach(PersonRank pr in ctx.PersonRanks.Where(x => x.IDPerson == IDPerson).OrderByDescending(x => x.Date))
+                {
+                    result.Add(new PersonRankContract(pr));
+                }
+            }
+
+            return result;
+        }
+
+        public List<RankContract> GetRanks()
+        {
+            List<RankContract> result = new List<RankContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                foreach(Rank r in ctx.Ranks.OrderBy(x => x.Order))
+                {
+                    result.Add(new RankContract(r));
+                }
+            }
+
+            return result;
+        }
+
+        public List<OrganizationContract> GetOrganizationInitiators(int IDOrganization)
+        {
+            List<OrganizationContract> result = new List<OrganizationContract>();
+
+            using (IVREntities ctx = new IVREntities())
+            {
+                Organization currentOrganization = ctx.Organizations.Single(x => x.ID == IDOrganization);
+                foreach(Organization org in ctx.Organizations.Where(x => x.ID == IDOrganization || x.Level < currentOrganization.Level).OrderByDescending(x => x.Level))
+                {
+                    result.Add(new OrganizationContract(org));
                 }
             }
 

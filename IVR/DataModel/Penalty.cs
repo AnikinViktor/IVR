@@ -19,7 +19,6 @@ namespace IVRClient.DataModel
             this.IDPenaltyType = penalty.IDPenaltyType;
             this.Description = penalty.Description;
             this.DocumentDestroy = penalty.DocumentDestroy;
-            this.IDPerson = penalty.IDPerson;
         }
 
         public static List<Penalty> Convert(PenaltyContract[] penalties)
@@ -47,17 +46,5 @@ namespace IVRClient.DataModel
         public string Description { get; set; }
 
         public string DocumentDestroy { get; set; }
-
-        public int IDPerson { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            Penalty penalty = obj as Penalty;
-
-            if (penalty == null || this.ID != penalty.ID)
-                return false;
-            else
-                return true;
-        }
     }
 }

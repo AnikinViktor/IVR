@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace IVRClient.ViewModels
 {
+
     /// <summary>
     /// Базовый класс модели представления
     /// </summary>
@@ -51,8 +52,23 @@ namespace IVRClient.ViewModels
         /// </summary>
         public void LoadDataAsync()
         {
+            // Устанавливаем флаг начала загрузки данных
             Loading = true;
-            worker.RunWorkerAsync(PrepareLoadParams());
+            // Извлекаем параметры загрузки данных
+            LoadParams param = (LoadParams)PrepareLoadParams();
+
+            // Если параметры загрузки отсутствуют или сброшен флаг отмены, то загружаем данные
+            if (param == null || param.Cancel == false)
+            {
+                worker.RunWorkerAsync(PrepareLoadParams());
+                return;
+            }
+
+            // Если установлен флаг отмены, то не запускаем фоновую задачу и ставим флаг окончания загрузки данных
+            if(param.Cancel == true)
+            {
+                Loading = false;
+            }
         }
 
         /// <summary>
@@ -93,7 +109,7 @@ namespace IVRClient.ViewModels
         /// Подготавливает параметры загрузки данных
         /// </summary>
         /// <returns></returns>
-        virtual protected DoWorkEventArgs PrepareLoadParams()
+        virtual protected LoadParams PrepareLoadParams()
         {
             return null;
         }

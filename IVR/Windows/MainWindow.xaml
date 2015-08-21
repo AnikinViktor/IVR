@@ -12,7 +12,7 @@
         Title="Тетради ИВР" Height="350" Width="550" WindowState="Maximized">
     <Window.Resources>
         <vm:GroupsViewModel x:Key="viewModel"></vm:GroupsViewModel>
-
+        <vm:CommonViewModel x:Key="commonViewModel"></vm:CommonViewModel>
         <!--<Style TargetType="{x:Type r:RibbonTab}">
             <Setter Property="IsSelected" Value="{Binding Source={StaticResource viewModel}, Path=IsSelected}" />
         </Style>-->
@@ -62,7 +62,7 @@
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
                     <TextBlock Text="Год:" Margin="0,0,5,0"></TextBlock>
-                    <xctk:IntegerUpDown Value="{Binding Source={x:Static local:Helper.I}, Path=Year}" Width="60" />
+                    <xctk:IntegerUpDown Value="{Binding Source={x:Static local:AppState.I}, Path=Year}" Width="60" />
                     <Button Content="Открыть календарь" x:Name="calendarButton" Click="calendarButton_Click">
                         <Button.ContextMenu>
                             <ContextMenu>

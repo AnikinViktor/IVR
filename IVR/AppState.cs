@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace IVRClient
 {
-    class Helper : INotifyPropertyChanged
+    class AppState : INotifyPropertyChanged
     {
-        private Helper() { }
+        private AppState() { }
 
-        public static Helper I = new Helper();
+        public static AppState I = new AppState();
 
         #region Service
         private ServiceClient srv = new ServiceClient();
@@ -37,6 +37,18 @@ namespace IVRClient
                 this._Year = value;
                 RaisePropertyChanged("Year");
             }
+        }
+        #endregion
+
+        #region Идентификатор учреждения
+        public int IDOrganization
+        {
+            get { return 2; }
+        }
+
+        public int IDDepartment
+        {
+            get { return 1; }
         }
         #endregion
 

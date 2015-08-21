@@ -14,6 +14,7 @@ namespace DataProvider
     
     public partial class PersonRank
     {
+        public int ID { get; set; }
         public int IDPerson { get; set; }
         public int IDRank { get; set; }
         public System.DateTime Date { get; set; }

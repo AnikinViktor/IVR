@@ -22,7 +22,6 @@ namespace DataProvider
             this.PersonRanks = new HashSet<PersonRank>();
             this.Promotions = new HashSet<Promotion>();
             this.Works = new HashSet<Work>();
-            this.Works1 = new HashSet<Work>();
             this.Groups = new HashSet<Group>();
         }
     
@@ -53,8 +52,6 @@ namespace DataProvider
         public virtual ICollection<Promotion> Promotions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Work> Works { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Work> Works1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Group> Groups { get; set; }
     }

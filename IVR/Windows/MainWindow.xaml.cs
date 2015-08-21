@@ -28,6 +28,11 @@ namespace IVRClient
            get { return this.Resources["viewModel"] as GroupsViewModel;  }
         }
 
+        private CommonViewModel commonVM
+        {
+            get { return this.Resources["commonViewModel"] as CommonViewModel; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,6 +49,7 @@ namespace IVRClient
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             vm.LoadDataAsync();
+            commonVM.LoadDataAsync();
         }
 
         private void calendarButton_Click(object sender, RoutedEventArgs e)

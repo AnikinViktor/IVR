@@ -42,15 +42,5 @@ namespace IVRClient.DataModel
                 RaisePropertyChanged("FIO");
             }
         }
-
-        public override bool Equals(object obj)
-        {
-            Person person = obj as Person;
-
-            if (person == null || this.ID != person.ID)
-                return false;
-            else
-                return true;
-        }
     }
 }
